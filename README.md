@@ -15,7 +15,7 @@ Author: Brad Stanfield, MBChB, FRNZCGP (general practitioner, New Zealand). Corr
 
 I own a company that sells a dietary supplement containing hydrolysed collagen peptides. I also make health videos on YouTube, which earn revenue, including one that discusses these papers. The corrected results favour the kind of product I sell. No one funded this work. This audit was not registered in advance, and I did not decide beforehand which rows to check (see "How rows were chosen" below).
 
-I used AI software to help extract values from the trial reports, cross-check them and run the analyses, and I take responsibility for the results. Please weigh the work with the conflict in mind; that is why every number is traceable to a published source.
+I used AI tools (Anthropic's Claude and OpenAI's Codex) to help extract values from the trial reports, cross-check them and run the analyses. Separate AI review runs, not involved in the extraction, were asked to try to refute every re-extracted row and every correction. I checked the results and take responsibility for them. Please weigh the work with the conflict in mind; that is why every number is traceable to a published source.
 
 #### Terms used below
 - SMD (standardised mean difference): the difference between groups in standard-deviation units, computed here as Hedges' g. As a rough guide, 0.2 is small, 0.5 moderate and 0.8 large.
