@@ -1,0 +1,17 @@
+"study","method","dose","unit","Time","NE","ME","SE","NC","MC","SC","Notes","sponsor","ma1","ma2","cap_method"
+"Bolke 2019","CM 825",2.5,"AU",12,36,44.5,4.4,36,36.6,5.7,"Not micrometer","Industry",1,1,1
+"Inoue 2016","CM820",5,NA,8,54,30.989259,12.67041,26,25.42,14.88,NA,"industry",1,1,1
+"Nometo 2020","CM825",10,NA,8,20,51.7,6.5,19,41.4,9.8,NA,"industry",1,1,1
+"Ito 2018","CM Series",10,NA,8,10,60.3,8.2,11,60.9,10.7,NA,"industry",1,1,1
+"koizuma 2018","CM825",3,NA,12,37,55.237,9.167,34,51.58,7.7,"Used SEM, needed correction; assumption made of first order delta correction for conversion","industry",1,1,1
+"shugihara2015","CM820",2.5,NA,8,26,73.98,8.86,27,70.85,10.2,NA,"industry",1,1,1
+"schwarz 2019","MoistureMeterSC",0.3,NA,12,58,61.31,24.53,55,62.08,28.41,NA,"industry",1,1,1
+"zmitek 2020","SkinLab Combo hydration probe",4,NA,12,16,200,52.3,15,194.1,44.4,"not cap","Not Industry",1,1,0
+"choi 2014","CM Series",3,NA,12,8,71.09,13.22,8,61.3,10.48,NA,"Not Industry",1,1,1
+"Asserin 2015","CM Device",10,"AU",8,11,65.28,5.933,11,52.91,6.567,"Extracted from fig? 2x","Industry",0,1,1
+"di cerbo 2015","skin tester device",0.248,"Unclear",2,15,61.98,13.0442079100266,15,55.56,13.0442079100266,"Used SEM, needed correction","Not Industry",0,1,0
+"jung 2020","Moisture Meter D",1,"percent",12,24,42.03,5.41,20,40.947,6.67,"mixed up percentages","industry",0,1,1
+"kim 2018","CM 825",1,"AU",12,26,61.14,11.31,27,53.02,13.59,NA,"industry",0,1,1
+"miyanga 2021","CM device",5,"AU",12,33,32.3540966,7.836224,33,29.7682,7.9372295,"percentage nonsese","industry",0,1,1
+"tak 2021","CM 825",1,NA,12,36,209,18.7,38,212.1,16,NA,"industry",0,1,1
+"yoon 2014","CM Series",3,NA,12,22,62.289,16.875,22,57.383,15.294,"original paper not sig, sig in analysis because authors fuck up %","industry",0,1,1

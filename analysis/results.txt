@@ -1,0 +1,102 @@
+Data S1 MD5 checked: allelasticfinal.xlsx, hydrodata.xlsx
+
+== Step 2: corrections table vs Data S1 as published ==
+  All 16 rows: every changed cell's published value matches Data S1.
+
+== Step 3: reproduce all ten rows of Grimes & Mahto Table 2 (daily-dose meta-regression, published data) ==
+  deM hyd all         ours   0.03 ( -0.10,   0.15) p 0.66 k  9 I2 74.5% | printed   0.03 ( -0.10,   0.15) p 0.66 k  9 I2 74.5% match
+  deM hyd capacitance ours   0.03 ( -0.10,   0.15) p 0.69 k  8 I2 77.3% | printed   0.03 ( -0.10,   0.15) p 0.69 k  8 I2 77.3% match
+  deM ela all         ours  -0.10 ( -0.67,   0.46) p 0.72 k 13 I2 99.0% | printed  -0.10 ( -0.67,   0.46) p 0.72 k 13 I2 99.0% match
+  deM ela pressure    ours  -4.87 (-21.53,  11.79) p 0.57 k  3 I2 99.5% | printed  -4.89 (-21.53,  11.79) p 0.57 k  3 I2 99.5% match (documented exception)
+  deM ela suction     ours  -0.09 ( -0.30,   0.12) p 0.41 k 10 I2 92.6% | printed  -0.09 ( -0.30,   0.12) p 0.41 k 10 I2 92.6% match
+  Pu  hyd all         ours   0.07 ( -0.01,   0.14) p 0.08 k 16 I2 58.8% | printed   0.07 ( -0.01,   0.14) p 0.08 k 16 I2 58.8% match
+  Pu  hyd capacitance ours   0.07 ( -0.01,   0.15) p 0.08 k 14 I2 63.4% | printed   0.07 ( -0.01,   0.15) p 0.08 k 14 I2 63.4% match
+  Pu  ela all         ours   0.02 ( -0.35,   0.39) p 0.92 k 18 I2 98.6% | printed   0.02 ( -0.35,   0.39) p 0.92 k 18 I2 98.6% match
+  Pu  ela pressure    ours  -4.87 (-21.53,  11.79) p 0.57 k  3 I2 99.5% | printed  -4.89 (-21.53,  11.79) p 0.57 k  3 I2 99.5% match (documented exception)
+  Pu  ela suction     ours   0.04 ( -0.15,   0.22) p 0.70 k 14 I2 94.1% | printed   0.04 ( -0.14,   0.22) p 0.70 k 14 I2 94.1% match (documented exception)
+  All ten rows reproduced (see the comment above for the two printed values that do not round from the model).
+
+== Step 5a: pooled effect, Data S1 as published vs corrected (all rows) ==
+  Grimes & Mahto report dose meta-regressions, not pooled effects. 'As published' below is MY
+  pooling of their dataset with their model settings, without the dose term.
+Elasticity
+  my pooling of Data S1 as published                                 g =  0.37 (95% CI -0.74 to  1.48), p = 0.51, k = 18, I2 = 99%, 95% PI -4.41 to  5.15 (t-based -4.80 to  5.54)
+  corrected                                                          g =  0.63 (95% CI  0.34 to  0.92), p = 1.7e-05, k = 18, I2 = 80%, 95% PI -0.47 to  1.74 (t-based -0.57 to  1.83)
+Hydration
+  my pooling of Data S1 as published                                 g =  0.52 (95% CI  0.28 to  0.76), p = 2.4e-05, k = 16, I2 = 64%, 95% PI -0.27 to  1.31 (t-based -0.34 to  1.38)
+  corrected                                                          g =  0.48 (95% CI  0.22 to  0.74), p = 0.00033, k = 16, I2 = 69%, 95% PI -0.40 to  1.35 (t-based -0.48 to  1.43)
+
+== Step 5b: elasticity decomposition (which corrections move the result) ==
+  as published, only the Czajka error corrected                      g = -0.04 (95% CI -0.54 to  0.46), p = 0.89, k = 18, I2 = 93%, 95% PI -2.12 to  2.05 (t-based -2.29 to  2.22)
+  as published, Czajka excluded                                      g = -0.13 (95% CI -0.62 to  0.37), p = 0.62, k = 17, I2 = 93%, 95% PI -2.14 to  1.89 (t-based -2.31 to  2.06)
+  as published, the 7 reversed rows replaced by their corrected rows g =  1.01 (95% CI  0.05 to  1.98), p = 0.04, k = 18, I2 = 98%, 95% PI -3.15 to  5.17 (t-based -3.49 to  5.51)
+  corrected, Czajka excluded                                         g =  0.58 (95% CI  0.29 to  0.86), p = 7.2e-05, k = 17, I2 = 78%, 95% PI -0.47 to  1.63 (t-based -0.57 to  1.72)
+
+== Step 5c: elasticity sensitivity analyses (corrected data) ==
+  Sangsuwan at week 4 (end of dosing) instead of week 8              g =  0.64 (95% CI  0.35 to  0.93), p = 1.4e-05, k = 18, I2 = 81%, 95% PI -0.48 to  1.76 (t-based -0.57 to  1.85)
+  Cutometer R2 rows only (one device, one parameter)                 g =  0.61 (95% CI  0.37 to  0.84), p = 3.3e-07, k = 10, I2 = 38%, 95% PI  0.10 to  1.11 (t-based  0.02 to  1.20)
+  Cutometer R2 only, excluding untreated controls (Choi, Nomoto)     g =  0.52 (95% CI  0.30 to  0.73), p = 3.6e-06, k =  8, I2 = 24%, 95% PI  0.15 to  0.89 (t-based  0.05 to  0.98)
+  suction (Cutometer) rows only                                      g =  0.66 (95% CI  0.34 to  0.99), p = 5.1e-05, k = 14, I2 = 78%, 95% PI -0.43 to  1.76 (t-based -0.55 to  1.88)
+  excluding untreated, non-placebo controls (Choi, Nomoto)           g =  0.56 (95% CI  0.27 to  0.86), p = 0.00021, k = 16, I2 = 81%, 95% PI -0.53 to  1.66 (t-based -0.64 to  1.76)
+  only rows checked against the original paper (Tak excluded: direction unclear) g =  0.63 (95% CI  0.31 to  0.94), p = 8.4e-05, k = 12, I2 = 73%, 95% PI -0.32 to  1.58 (t-based -0.45 to  1.71)
+  Tak 2021 elasticity sign reversed (if its mm measure is lower-is-better) g =  0.67 (95% CI  0.41 to  0.93), p = 6.5e-07, k = 18, I2 = 76%, 95% PI -0.32 to  1.66 (t-based -0.40 to  1.74)
+  excluding Tak 2021 elasticity                                      g =  0.69 (95% CI  0.41 to  0.97), p = 1e-06, k = 17, I2 = 77%, 95% PI -0.33 to  1.71 (t-based -0.41 to  1.80)
+  Czajka with the baseline difference removed (control + 1.0)        g =  0.60 (95% CI  0.33 to  0.87), p = 1.3e-05, k = 18, I2 = 78%, 95% PI -0.42 to  1.61 (t-based -0.50 to  1.70)
+  Koizumi SDs from baseline SEM x sqrt(n) instead of delta method    g =  0.64 (95% CI  0.35 to  0.92), p = 1.4e-05, k = 18, I2 = 80%, 95% PI -0.47 to  1.74 (t-based -0.56 to  1.83)
+  excluding Campos (not checked; largest positive row)               g =  0.54 (95% CI  0.30 to  0.79), p = 1.2e-05, k = 17, I2 = 71%, 95% PI -0.31 to  1.40 (t-based -0.39 to  1.47)
+  de Miranda subset only                                             g =  0.63 (95% CI  0.35 to  0.91), p = 8.7e-06, k = 13, I2 = 71%, 95% PI -0.23 to  1.50 (t-based -0.34 to  1.61)
+  Grimes & Mahto 'Not Industry' label (includes manufacturer-supplied trials) g =  0.70 (95% CI -0.12 to  1.53), p = 0.096, k =  6, I2 = 89%, 95% PI -1.36 to  2.77 (t-based -2.22 to  3.63)
+  Hartung-Knapp (t-based CI and PI)                                  g =  0.63 (95% CI  0.32 to  0.95), p = 0.00055, k = 18, I2 = 80%, 95% PI -0.56 to  1.83 (t-based -0.57 to  1.83)
+  Cutometer R2 only, Hartung-Knapp                                   g =  0.61 (95% CI  0.32 to  0.90), p = 0.0011, k = 10, I2 = 38%, 95% PI  0.02 to  1.20 (t-based  0.00 to  1.21)
+  leave-one-out: estimates 0.54 to 0.69 (lowest without campos); largest p = 8.3e-05
+  Egger-type regression test for funnel asymmetry: z = 0.73, p = 0.47
+
+== Step 5d: hydration sensitivity analyses (corrected data) ==
+  only rows checked against the original paper                       g =  0.50 (95% CI  0.15 to  0.86), p = 0.005, k = 10, I2 = 71%, 95% PI -0.48 to  1.49 (t-based -0.65 to  1.66)
+  excluding untreated, non-placebo controls (Choi, Nomoto)           g =  0.41 (95% CI  0.15 to  0.68), p = 0.0023, k = 14, I2 = 68%, 95% PI -0.43 to  1.26 (t-based -0.53 to  1.36)
+  capacitance devices only                                           g =  0.50 (95% CI  0.21 to  0.80), p = 0.00074, k = 14, I2 = 73%, 95% PI -0.45 to  1.46 (t-based -0.56 to  1.57)
+  de Miranda subset only                                             g =  0.52 (95% CI  0.15 to  0.89), p = 0.0062, k =  9, I2 = 73%, 95% PI -0.48 to  1.52 (t-based -0.69 to  1.72)
+  Grimes & Mahto 'Not Industry' label (includes manufacturer-supplied trials) g =  0.39 (95% CI -0.06 to  0.84), p = 0.092, k =  3, I2 =  0%, 95% PI -0.06 to  0.84 (t-based -0.06 to  0.84)
+  Hartung-Knapp (t-based CI and PI)                                  g =  0.48 (95% CI  0.19 to  0.77), p = 0.0033, k = 16, I2 = 69%, 95% PI -0.48 to  1.43 (t-based -0.48 to  1.44)
+  leave-one-out: estimates 0.37 to 0.53 (lowest without Bolke 2019); largest p = 0.0011
+  Egger-type regression test for funnel asymmetry: z = 1.71, p = 0.09
+
+== Step 5e: ANALYSIS 3 (separate question): collagen-only products, corrected data ==
+  Trials where collagen was the only active ingredient that differed between arms, per the trial
+  report (Kim 2018 gave 100 mg vitamin C to both arms; Jung's drink vehicle contains vitamin C).
+  Excluded as multi-ingredient: Ito, Nomoto, Genovese, Czajka, Yoon, Zmitek, Campos, Bolke,
+  Schwartz, di Cerbo (VISCODERM Pearls, per its abstract); composition not verified: Asserin.
+  elasticity, collagen-only products                                 g =  0.44 (95% CI  0.15 to  0.73), p = 0.003, k =  8, I2 = 54%, 95% PI -0.22 to  1.09 (t-based -0.38 to  1.25)
+  elasticity, collagen-only, placebo-controlled (excluding Choi)     g =  0.37 (95% CI  0.10 to  0.64), p = 0.0072, k =  7, I2 = 47%, 95% PI -0.19 to  0.92 (t-based -0.36 to  1.10)
+  elasticity, collagen-only, Cutometer R2 only                       g =  0.50 (95% CI  0.27 to  0.72), p = 1e-05, k =  6, I2 =  0%, 95% PI  0.27 to  0.72 (t-based  0.18 to  0.81)
+  hydration, collagen-only products                                  g =  0.31 (95% CI  0.11 to  0.51), p = 0.0023, k =  8, I2 = 10%, 95% PI  0.04 to  0.58 (t-based -0.03 to  0.65)
+  hydration, collagen-only, placebo-controlled (excluding Choi)      g =  0.29 (95% CI  0.09 to  0.49), p = 0.0049, k =  7, I2 = 12%, 95% PI  0.02 to  0.57 (t-based -0.07 to  0.65)
+  hydration, collagen-only, excluding Jung (placebo contents not itemised) g =  0.33 (95% CI  0.11 to  0.55), p = 0.0037, k =  7, I2 = 19%, 95% PI -0.01 to  0.67 (t-based -0.12 to  0.77)
+  elasticity, collagen-only, rows checked against the paper only     g =  0.50 (95% CI  0.25 to  0.76), p = 0.00011, k =  5, I2 =  0%, 95% PI  0.25 to  0.76 (t-based  0.09 to  0.92)
+  hydration, collagen-only, rows checked against the paper only      g =  0.32 (95% CI  0.04 to  0.59), p = 0.024, k =  6, I2 = 33%, 95% PI -0.15 to  0.78 (t-based -0.35 to  0.98)
+  elasticity, collagen-only, excluding Kim 2018 (vitamin C in both arms) g =  0.46 (95% CI  0.12 to  0.80), p = 0.0086, k =  7, I2 = 62%, 95% PI -0.32 to  1.23 (t-based -0.56 to  1.47)
+
+== Step 5f: dose meta-regressions, published vs corrected ==
+Pu set (all rows)
+  elasticity, published                                              daily-dose (g/day) coefficient =  0.0191 (95% CI -0.3479 to  0.3860), p = 0.92, k = 18
+  elasticity, corrected                                              daily-dose (g/day) coefficient =  0.0841 (95% CI -0.0067 to  0.1748), p = 0.07, k = 18
+  hydration, published                                               daily-dose (g/day) coefficient =  0.0653 (95% CI -0.0088 to  0.1395), p = 0.08, k = 16
+  hydration, corrected                                               daily-dose (g/day) coefficient =  0.0707 (95% CI -0.0101 to  0.1514), p = 0.09, k = 16
+  elasticity, published                                              cumulative-dose (g) coefficient =  0.0016 (95% CI -0.0035 to  0.0067), p = 0.54, k = 18
+  elasticity, corrected                                              cumulative-dose (g) coefficient =  0.0014 (95% CI  0.0002 to  0.0026), p = 0.02, k = 18
+  hydration, published                                               cumulative-dose (g) coefficient =  0.0011 (95% CI -0.0002 to  0.0024), p = 0.11, k = 16
+  hydration, corrected                                               cumulative-dose (g) coefficient =  0.0012 (95% CI -0.0002 to  0.0026), p = 0.10, k = 16
+de Miranda subset
+  elasticity, published                                              daily-dose (g/day) coefficient = -0.1036 (95% CI -0.6653 to  0.4581), p = 0.72, k = 13
+  elasticity, corrected                                              daily-dose (g/day) coefficient =  0.0006 (95% CI -0.1129 to  0.1141), p = 0.99, k = 13
+  hydration, published                                               daily-dose (g/day) coefficient =  0.0281 (95% CI -0.0962 to  0.1524), p = 0.66, k =  9
+  hydration, corrected                                               daily-dose (g/day) coefficient =  0.0249 (95% CI -0.0999 to  0.1497), p = 0.70, k =  9
+  elasticity, published                                              cumulative-dose (g) coefficient =  0.0002 (95% CI -0.0098 to  0.0103), p = 0.97, k = 13
+  elasticity, corrected                                              cumulative-dose (g) coefficient = -0.0001 (95% CI -0.0020 to  0.0019), p = 0.94, k = 13
+  hydration, published                                               cumulative-dose (g) coefficient =  0.0007 (95% CI -0.0016 to  0.0030), p = 0.57, k =  9
+  hydration, corrected                                               cumulative-dose (g) coefficient =  0.0006 (95% CI -0.0017 to  0.0030), p = 0.59, k =  9
+Cumulative-dose elasticity slope (corrected, Pu set) without Campos:
+  elasticity, corrected, excluding Campos                            cumulative-dose (g) coefficient =  0.0005 (95% CI -0.0010 to  0.0020), p = 0.54, k = 17
+
+== Session ==
+  R version 4.5.0 (2025-04-11); metafor 5.2.1; readxl 1.5.0.1

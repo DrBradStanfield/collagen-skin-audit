@@ -1,0 +1,116 @@
+== Step 1: reproduce Batool's printed results from their own study-level values ==
+  hydration  overall  ours  0.44 ( 0.15,  0.73) | printed  0.44 ( 0.15,  0.73) match
+  hydration  week 2   ours  0.08 (-0.35,  0.51) | printed  0.08 (-0.35,  0.51) match
+  hydration  week 4   ours  0.79 ( 0.33,  1.25) | printed  0.79 ( 0.33,  1.25) match
+  hydration  week 8   ours  0.34 (-0.52,  1.21) | printed  0.34 (-0.52,  1.21) match
+  hydration  week 12  ours  0.34 ( 0.06,  0.63) | printed  0.34 ( 0.06,  0.63) match
+  elasticity overall  ours  0.62 ( 0.15,  1.09) | printed  0.62 ( 0.15,  1.10) match
+  elasticity week 4   ours  0.04 (-0.49,  0.57) | printed  0.04 (-0.49,  0.57) match
+  elasticity week 8   ours  0.17 (-0.14,  0.47) | printed  0.17 (-0.14,  0.47) match
+  elasticity week 12  ours  1.35 ( 0.48,  2.22) | printed  1.35 ( 0.48,  2.22) match
+  roughness  overall  ours -0.57 (-1.06, -0.08) | printed -0.57 (-1.06, -0.08) match
+  roughness  week 4   ours -0.24 (-0.69,  0.21) | printed -0.24 (-0.69,  0.21) match
+  roughness  week 6   ours -0.57 (-0.86, -0.27) | printed -0.57 (-0.87, -0.28) match
+  roughness  week 8   ours -0.36 (-0.89,  0.18) | printed -0.36 (-0.89,  0.18) match
+  roughness  week 12  ours -1.25 (-3.02,  0.52) | printed -1.25 (-3.02,  0.51) match
+
+Row verdicts (column 'verdict' in re-extraction.csv; Batool's plotted rows, then the rows Batool removed or omitted):
+  elasticity omitted     omitted by Batool 1
+  elasticity plotted     minor slip 3, wrong 16
+  elasticity removed     wrong 2
+  hydration plotted      correct 10, minor slip 2, probably wrong 1, wrong 17, wrong measure 1
+  hydration removed      wrong 2
+  roughness plotted      correct 14, minor slip 3, wrong 5
+
+Batool as printed, for comparison:
+  hydration (Figure 4), recomputed                                        0.44 (95% CI  0.15 to  0.73), p = 0.0029, I2 = 91%, k = 31 rows, 19 trials
+  elasticity (Figure 5), recomputed                                       0.62 (95% CI  0.15 to  1.09), p = 0.0095, I2 = 93%, k = 19 rows, 14 trials
+  roughness (Figure 8), recomputed                                       -0.57 (95% CI -1.06 to -0.08), p = 0.023, I2 = 96%, k = 22 rows,  9 trials
+
+Analysis 4 keeps trials where collagen was the only active ingredient that differed between arms,
+per the trial report. Excluded as multi-ingredient: Nomoto, Ito, Bolke, Schwartz, Yoon (astaxanthin),
+Zmitek (CoQ10 and vitamins), Lin (Djulis extract). Excluded from hydration: Baek 2025 (hibiscus
+'collagen alternative' with no collagen in its ingredient list; composition unclear).
+
+== PRIMARY: endpoint SMD where reported (change-score SMD only where a trial reports nothing else) ==
+ANALYSIS 2. Hydration (positive favours collagen)
+  Batool's 31 rows, re-extracted                                          0.58 (95% CI  0.38 to  0.78), p = 9e-09, I2 = 80%, k = 31 rows, 19 trials
+  plus the two removed rows (Morakul 2024, Koizumi 2017)                  0.60 (95% CI  0.41 to  0.78), p = 3.6e-10, I2 = 79%, k = 33 rows, 20 trials
+  multilevel, all of the above                                            0.58 (95% CI  0.35 to  0.82); cluster-robust CI  0.33 to  0.84, 20 independent cohorts
+  excluding Baek 2025 (hibiscus extract) and Evans 2021 (self-rated)      0.61 (95% CI  0.42 to  0.81), p = 1.1e-09, I2 = 80%, k = 31 rows, 18 trials
+  endpoint values only (change-only rows Yoon x2, Koizumi dropped)        0.61 (95% CI  0.41 to  0.81), p = 2.9e-09, I2 = 81%, k = 30 rows, 18 trials
+    (Yoon rows read as 95% CIs: 0.34, 0.55)
+  Yoon 2014 error bars read as 95% CIs instead of SEMs                    0.61 (95% CI  0.42 to  0.79), p = 1.1e-10, I2 = 79%, k = 33 rows, 20 trials
+ANALYSIS 2. Elasticity (positive favours collagen)
+  Batool's 19 rows, re-extracted                                          0.47 (95% CI  0.29 to  0.65), p = 3.3e-07, I2 = 57%, k = 19 rows, 14 trials
+  plus the two removed rows (Yoon 2014, Zmitek 2020)                      0.45 (95% CI  0.27 to  0.63), p = 7.5e-07, I2 = 58%, k = 21 rows, 16 trials
+  plus Seong 2024 week 12 (omitted by Batool)                             0.46 (95% CI  0.29 to  0.62), p = 1e-07, I2 = 56%, k = 22 rows, 16 trials
+  multilevel, all of the above                                            0.46 (95% CI  0.29 to  0.62); cluster-robust CI  0.29 to  0.62, 15 independent cohorts
+  endpoint values only (change-only rows Lee, Koizumi, Yoon dropped)      0.45 (95% CI  0.27 to  0.63), p = 1.2e-06, I2 = 54%, k = 19 rows, 13 trials
+ANALYSIS 2. Roughness (negative favours collagen)
+  Batool's 22 rows, re-extracted                                         -0.57 (95% CI -0.77 to -0.37), p = 2.3e-08, I2 = 76%, k = 22 rows,  9 trials
+  multilevel                                                             -0.60 (95% CI -0.99 to -0.21); cluster-robust CI -1.07 to -0.13,  8 independent cohorts
+  excluding Demir-Dora 2024 (sign question)                              -0.54 (95% CI -0.77 to -0.30), p = 6e-06, I2 = 78%, k = 19 rows,  8 trials
+  endpoint values only (change-only rows Lee, Koizumi dropped)           -0.61 (95% CI -0.86 to -0.36), p = 2.1e-06, I2 = 80%, k = 17 rows,  7 trials
+ANALYSIS 4 (separate question): collagen-only products
+  hydration, collagen-only                                                0.61 (95% CI  0.38 to  0.84), p = 1.8e-07, I2 = 82%, k = 23 rows, 13 trials
+  hydration, collagen-only, multilevel                                    0.60 (95% CI  0.29 to  0.91); cluster-robust CI  0.25 to  0.95, 13 independent cohorts
+  hydration, collagen-only, endpoint values only                          0.60 (95% CI  0.36 to  0.84), p = 8.9e-07, I2 = 82%, k = 22 rows, 12 trials
+  elasticity, collagen-only                                               0.40 (95% CI  0.22 to  0.57), p = 6.4e-06, I2 = 45%, k = 15 rows, 10 trials
+  elasticity, collagen-only, multilevel                                   0.40 (95% CI  0.22 to  0.57); cluster-robust CI  0.25 to  0.54,  9 independent cohorts
+  elasticity, collagen-only, placebo-controlled (excluding Choi)          0.37 (95% CI  0.20 to  0.54), p = 1.3e-05, I2 = 41%, k = 14 rows,  9 trials
+  elasticity, collagen-only, endpoint values only                         0.38 (95% CI  0.22 to  0.54), p = 4.1e-06, I2 = 26%, k = 13 rows,  8 trials
+  roughness, collagen-only (negative favours collagen)                   -0.57 (95% CI -0.74 to -0.39), p = 1.2e-10, I2 = 59%, k = 17 rows,  6 trials
+  roughness, collagen-only, multilevel                                   -0.53 (95% CI -0.78 to -0.28); cluster-robust CI -0.88 to -0.18,  5 independent cohorts
+  roughness, collagen-only, endpoint values only                         -0.63 (95% CI -0.85 to -0.40), p = 3.6e-08, I2 = 63%, k = 12 rows,  4 trials
+
+== SENSITIVITY: change-score SMD wherever reported, endpoint otherwise ==
+ANALYSIS 2. Hydration (positive favours collagen)
+  Batool's 31 rows, re-extracted                                          0.77 (95% CI  0.56 to  0.98), p = 8.1e-13, I2 = 82%, k = 31 rows, 19 trials
+  plus the two removed rows (Morakul 2024, Koizumi 2017)                  0.77 (95% CI  0.58 to  0.97), p = 1.3e-14, I2 = 81%, k = 33 rows, 20 trials
+  multilevel, all of the above                                            0.76 (95% CI  0.50 to  1.02); cluster-robust CI  0.49 to  1.03, 20 independent cohorts
+  excluding Baek 2025 (hibiscus extract) and Evans 2021 (self-rated)      0.77 (95% CI  0.57 to  0.97), p = 6.1e-14, I2 = 80%, k = 31 rows, 18 trials
+ANALYSIS 2. Elasticity (positive favours collagen)
+  Batool's 19 rows, re-extracted                                          0.55 (95% CI  0.38 to  0.72), p = 2.8e-10, I2 = 51%, k = 19 rows, 14 trials
+  plus the two removed rows (Yoon 2014, Zmitek 2020)                      0.52 (95% CI  0.35 to  0.69), p = 1.5e-09, I2 = 53%, k = 21 rows, 16 trials
+  plus Seong 2024 week 12 (omitted by Batool)                             0.52 (95% CI  0.37 to  0.68), p = 1.1e-10, I2 = 51%, k = 22 rows, 16 trials
+  multilevel, all of the above                                            0.52 (95% CI  0.37 to  0.68); cluster-robust CI  0.36 to  0.69, 15 independent cohorts
+ANALYSIS 2. Roughness (negative favours collagen)
+  Batool's 22 rows, re-extracted                                         -0.57 (95% CI -0.82 to -0.32), p = 1e-05, I2 = 85%, k = 22 rows,  9 trials
+  multilevel                                                             -0.66 (95% CI -1.26 to -0.06); cluster-robust CI -1.38 to  0.06,  8 independent cohorts
+  excluding Demir-Dora 2024 (sign question)                              -0.54 (95% CI -0.83 to -0.24), p = 0.00035, I2 = 87%, k = 19 rows,  8 trials
+ANALYSIS 4 (separate question): collagen-only products
+  hydration, collagen-only                                                0.81 (95% CI  0.60 to  1.02), p = 3.6e-14, I2 = 77%, k = 23 rows, 13 trials
+  hydration, collagen-only, multilevel                                    0.79 (95% CI  0.50 to  1.07); cluster-robust CI  0.47 to  1.10, 13 independent cohorts
+  elasticity, collagen-only                                               0.48 (95% CI  0.32 to  0.64), p = 4.6e-09, I2 = 37%, k = 15 rows, 10 trials
+  elasticity, collagen-only, multilevel                                   0.48 (95% CI  0.32 to  0.64); cluster-robust CI  0.30 to  0.67,  9 independent cohorts
+  elasticity, collagen-only, placebo-controlled (excluding Choi)          0.46 (95% CI  0.30 to  0.62), p = 9.7e-09, I2 = 34%, k = 14 rows,  9 trials
+  roughness, collagen-only (negative favours collagen)                   -0.57 (95% CI -0.74 to -0.39), p = 1.2e-10, I2 = 59%, k = 17 rows,  6 trials
+  roughness, collagen-only, multilevel                                   -0.53 (95% CI -0.78 to -0.28); cluster-robust CI -0.88 to -0.18,  5 independent cohorts
+
+== SENSITIVITY: row-by-row choice in re-extraction.csv (best_g) ==
+ANALYSIS 2. Hydration (positive favours collagen)
+  Batool's 31 rows, re-extracted                                          0.59 (95% CI  0.40 to  0.78), p = 1.6e-09, I2 = 79%, k = 31 rows, 19 trials
+  plus the two removed rows (Morakul 2024, Koizumi 2017)                  0.61 (95% CI  0.43 to  0.79), p = 5.1e-11, I2 = 78%, k = 33 rows, 20 trials
+  multilevel, all of the above                                            0.60 (95% CI  0.37 to  0.83); cluster-robust CI  0.36 to  0.85, 20 independent cohorts
+  excluding Baek 2025 (hibiscus extract) and Evans 2021 (self-rated)      0.62 (95% CI  0.43 to  0.82), p = 1.6e-10, I2 = 79%, k = 31 rows, 18 trials
+ANALYSIS 2. Elasticity (positive favours collagen)
+  Batool's 19 rows, re-extracted                                          0.49 (95% CI  0.34 to  0.64), p = 6.4e-11, I2 = 36%, k = 19 rows, 14 trials
+  plus the two removed rows (Yoon 2014, Zmitek 2020)                      0.47 (95% CI  0.33 to  0.62), p = 3.4e-10, I2 = 40%, k = 21 rows, 16 trials
+  plus Seong 2024 week 12 (omitted by Batool)                             0.48 (95% CI  0.34 to  0.62), p = 1.7e-11, I2 = 37%, k = 22 rows, 16 trials
+  multilevel, all of the above                                            0.48 (95% CI  0.31 to  0.65); cluster-robust CI  0.29 to  0.67, 15 independent cohorts
+ANALYSIS 2. Roughness (negative favours collagen)
+  Batool's 22 rows, re-extracted                                         -0.54 (95% CI -0.75 to -0.34), p = 1.9e-07, I2 = 77%, k = 22 rows,  9 trials
+  multilevel                                                             -0.58 (95% CI -0.99 to -0.16); cluster-robust CI -1.07 to -0.08,  8 independent cohorts
+  excluding Demir-Dora 2024 (sign question)                              -0.51 (95% CI -0.75 to -0.27), p = 2.6e-05, I2 = 79%, k = 19 rows,  8 trials
+ANALYSIS 4 (separate question): collagen-only products
+  hydration, collagen-only                                                0.63 (95% CI  0.41 to  0.85), p = 2.6e-08, I2 = 80%, k = 23 rows, 13 trials
+  hydration, collagen-only, multilevel                                    0.63 (95% CI  0.33 to  0.92); cluster-robust CI  0.30 to  0.95, 13 independent cohorts
+  elasticity, collagen-only                                               0.44 (95% CI  0.29 to  0.58), p = 2.2e-09, I2 = 22%, k = 15 rows, 10 trials
+  elasticity, collagen-only, multilevel                                   0.44 (95% CI  0.29 to  0.58); cluster-robust CI  0.28 to  0.60,  9 independent cohorts
+  elasticity, collagen-only, placebo-controlled (excluding Choi)          0.42 (95% CI  0.28 to  0.56), p = 4.7e-09, I2 = 17%, k = 14 rows,  9 trials
+  roughness, collagen-only (negative favours collagen)                   -0.57 (95% CI -0.74 to -0.39), p = 1.1e-10, I2 = 59%, k = 17 rows,  6 trials
+  roughness, collagen-only, multilevel                                   -0.53 (95% CI -0.78 to -0.28); cluster-robust CI -0.88 to -0.18,  5 independent cohorts
+
+== Session ==
+  R version 4.5.0 (2025-04-11); metafor 5.2.1

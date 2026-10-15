@@ -1,0 +1,16 @@
+trial,outcome,source,figure,collagen_mean,collagen_sd,collagen_n,control_mean,control_sd,control_n,reported_smd,arms_right_way_round,DataS1_arms_right_way_round,note
+Choi 2014,elasticity,de Miranda 2021 (Int J Dermatol 60:1449),"Figure 3, journal p. 1454",0.786,0.054,8,0.718,0.017,8,1.61,yes,no,
+Choi 2014,elasticity,Pu 2023 (Nutrients 15:2080),"Figure 3, p. 8",0.786,0.054,8,0.718,0.017,8,1.61,yes,no,
+Genovese 2017,elasticity,de Miranda 2021,"Figure 3, journal p. 1454",8.07,0.2,60,7.52,0.2,60,2.73,yes,no,de Miranda used the SEM (0.2) as the SD
+Genovese 2017,elasticity,Pu 2023,"Figure 3, p. 8",8.07,1.55,60,7.52,1.55,60,0.35,yes,no,
+Inoue 2016,elasticity,de Miranda 2021,"Figure 3, journal p. 1454",0.758,0.0485,54,0.738,0.045,26,0.42,yes,no,
+Inoue 2016,elasticity,Pu 2023,"Figure 3, p. 8",0.758,0.0485,54,0.738,0.045,26,0.42,yes,no,
+Ito 2018,elasticity,de Miranda 2021,"Figure 3, journal p. 1454",0.784,0.07,10,0.779,0.06,11,0.07,yes,no,
+Ito 2018,elasticity,Pu 2023,"Figure 3, p. 8",0.784,0.07,10,0.779,0.06,11,0.07,yes,no,
+Koizumi 2018 (listed as 2017),elasticity,de Miranda 2021,"Figure 3, journal p. 1454",0.938,0.677,37,4.32,0.534,34,-5.46,no,no,"de Miranda entered Koizumi twice: here with the two arms' % changes the wrong way round, and again under the name 'Proksch 2014' (4.32 ± 0.534, n 37 vs 0.938 ± 0.677, n 34; SMD 5.51) with the arms the right way round. Both entries use Koizumi's SEMs as SDs."
+Koizumi 2018 (listed as 2017),elasticity,Pu 2023,"Figure 3, p. 8",4.32,3.248,37,0.938,3.948,34,0.93,yes,no,
+Nomoto 2020,elasticity,de Miranda 2021,"Figure 3, journal p. 1454",0.74,0.06,20,0.66,0.07,19,1.20,yes,no,
+Nomoto 2020,elasticity,Pu 2023,"Figure 3, p. 8",0.74,0.06,20,0.66,0.07,19,1.20,yes,no,
+Sangsuwan 2021 (listed as 2020),elasticity,de Miranda 2021,"Figure 3, journal p. 1454",0.56,0.11,17,0.48,0.08,19,0.82,yes,no,
+Sangsuwan 2021 (listed as 2020),elasticity,Pu 2023,"Figure 3, p. 8",0.56,0.11,17,0.48,0.08,19,0.82,yes,no,
+Tak 2021,hydration,Pu 2023,"Figure 4, p. 8",209,18.7,36,212.1,16,38,-0.18,yes,no,Not in de Miranda 2021

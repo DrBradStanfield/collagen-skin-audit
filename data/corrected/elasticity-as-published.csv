@@ -1,0 +1,19 @@
+"study","method","dose","unit","Time","NE","ME","SE","NC","MC","SC","Notes","sponsor","Suction","Pressure","ma1","ma2"
+"Bolke 2019","Cutometer MPA 580",2.5,"Unitless",12,36,0.81,0.04,36,0.75,0.06,"R2","Industry",1,0,1,1
+"campos","Cutometer SEM 575",10,NA,12.8571428571429,30,0.53,0.04,30,0.456,0.026,"R5","Not Industry",1,0,0,1
+"choi 2014","Cutometer  model",3,"Unitless",12,8,0.718,0.017,8,0.786,0.054,"R2","Not Industry",1,0,1,1
+"czaka 2018","SkinLab USB Elasticity Module",4,"Mpa",12.8571428571429,69,9.8,0.2,59,7.9,0.2,NA,"Industry",0,1,1,1
+"di cerbo 2014","skin tester",0.248,"percent?",2,15,25.3,1.369,15,24.7,0.867,NA,"Not Industry",0,0,0,1
+"genovase 2017","SkinLab USB Elasticity Module",5,"Mpa",12.8571428571429,60,7.52,1.54919333848297,60,8.07,1.54919333848297,"Mpa (mislabelled)","Industry",0,1,1,1
+"Inno 2016","Cutomater SEM575",5,"Unitless",8,54,0.738,0.045,26,0.767,0.058,"R2","industry",1,0,1,1
+"Ito 2018","Cutometer MPA580",10,"Unitless",8,9,0.779,0.06,11,0.784,0.07,"R2","industry",1,0,1,1
+"kim 2018","Cutometer MPA 580",1,NA,12,26,0.27,0.04,27,0.28,0.04,"R2","industry",1,0,0,1
+"koizuma 2018","Cutometer MPA580",3,"Unitless",12,37,0.74290368,0.00805416,34,0.761536,0.0073738,"R2","industry",1,0,1,1
+"miyanaga 2021","Cutometer model",5,NA,12,33,0.84,0.044,33,0.816,0.044,"R2","industry",1,0,0,1
+"Nometo 2020","Cutometer CT580+MPA580;",10,"Unitless",8,20,0.66,0.07,19,0.74,0.06,"R2","industry",1,0,1,1
+"sangsuwan 2020","Cutometer MPA 580",5,"Unitless",8,17,0.48,0.08,19,0.56,0.11,"R7","Not Industry",1,0,1,1
+"schwarz 2019","Cutometer MPA 580",0.3,"Unitless",12,58,0.4,0.08,55,0.34,0.15,"R5","industry",1,0,1,1
+"shugihara2015","Cutometer 575",2.5,"Unitless",8,26,0.758,0.109,27,0.697,0.087,"R2","industry",1,0,1,1
+"Yoon 2014","Cutometer MPA 580",0.75,"Unitless",12,22,0.62506444,0.0556,22,0.62564876,0.0675,"R2","industry",1,0,1,1
+"zmitek 2020","SkinLab USB Elasticity Module",4,"Mpa",12,16,1.38,0.33,15,1.59,0.68,"Mpa","Not Industry",0,1,1,1
+"tak 2021","Cutometer MPA580",1,"mm",12,36,0.33,0.1,38,0.36,0.09,NA,"Not Industry",1,0,0,1

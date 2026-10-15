@@ -1,0 +1,42 @@
+outcome,figure,week,study,trial,smd,lb,ub
+elasticity,Figure 5 (p. 14),4,Lee 2023,Lee 2023,-0.88,-1.29,-0.46
+elasticity,Figure 5 (p. 14),4,Inoue 2016 (L-CP),Inoue 2016,-0.13,-0.67,0.40
+elasticity,Figure 5 (p. 14),4,Seong 2023,Seong 2024,0.28,-0.13,0.70
+elasticity,Figure 5 (p. 14),4,Inoue 2016 (H-CP),Inoue 2016,0.38,-0.16,0.93
+elasticity,Figure 5 (p. 14),4,Nomoto 2020,Nomoto 2020,0.64,0.00,1.29
+elasticity,Figure 5 (p. 14),8,Inoue 2016 (L-CP),Inoue 2016,-0.51,-1.05,0.04
+elasticity,Figure 5 (p. 14),8,Nomoto 2020,Nomoto 2020,0.15,-0.48,0.78
+elasticity,Figure 5 (p. 14),8,Sugihara 2015,Sugihara 2015,0.20,-0.34,0.73
+elasticity,Figure 5 (p. 14),8,Ito 2018,Ito 2018,0.25,-0.61,1.11
+elasticity,Figure 5 (p. 14),8,Seong 2023,Seong 2024,0.42,0.01,0.84
+elasticity,Figure 5 (p. 14),8,Inoue 2016 (H-CP),Inoue 2016,0.45,-0.10,1.00
+elasticity,Figure 5 (p. 14),12,Vleminckx 2024,Vleminckx 2024,0.19,-0.23,0.62
+elasticity,Figure 5 (p. 14),12,Kim 2021,Kim 2018,0.30,-0.19,0.80
+elasticity,Figure 5 (p. 14),12,Koizumi 2017,Koizumi 2018,0.30,-0.16,0.77
+elasticity,Figure 5 (p. 14),12,Kim 2022,Kim 2022,0.66,0.22,1.10
+elasticity,Figure 5 (p. 14),12,Choi 2014,Choi 2014,1.32,0.21,2.43
+elasticity,Figure 5 (p. 14),12,Bolke 2019,Bolke 2019,1.94,1.37,2.51
+elasticity,Figure 5 (p. 14),12,Schwartz 2019,Schwartz 2019,2.64,2.13,3.15
+elasticity,Figure 5 (p. 14),12,Ahi 2024,Ahi 2024,3.59,2.83,4.35
+roughness,Figure 8 (p. 17),4,Inoue 2016 (H-CP),Inoue 2016,-0.98,-1.56,-0.40
+roughness,Figure 8 (p. 17),4,Sugihara 2015,Sugihara 2015,-0.67,-1.22,-0.12
+roughness,Figure 8 (p. 17),4,Lee 2023,Lee 2023,-0.56,-0.96,-0.16
+roughness,Figure 8 (p. 17),4,Inoue 2016 (L-CP),Inoue 2016,-0.41,-0.95,0.13
+roughness,Figure 8 (p. 17),4,Seong 2023,Seong 2024,-0.03,-0.45,0.39
+roughness,Figure 8 (p. 17),4,Lin 2020,Lin 2021,-0.01,-0.57,0.54
+roughness,Figure 8 (p. 17),4,Demir-Dora 2024,Demir-Dora 2024,0.84,0.45,1.22
+roughness,Figure 8 (p. 17),6,Koizumi 2017 (6W),Koizumi 2018,-0.60,-1.07,-0.12
+roughness,Figure 8 (p. 17),6,Schwartz 2019 (6W),Schwartz 2019,-0.55,-0.93,-0.18
+roughness,Figure 8 (p. 17),8,Inoue 2016 (H-CP),Inoue 2016,-1.62,-2.26,-0.99
+roughness,Figure 8 (p. 17),8,Sugihara 2015,Sugihara 2015,-0.74,-1.29,-0.18
+roughness,Figure 8 (p. 17),8,Inoue 2016 (L-CP),Inoue 2016,-0.67,-1.22,-0.12
+roughness,Figure 8 (p. 17),8,Lee 2023,Lee 2023,-0.22,-0.61,0.18
+roughness,Figure 8 (p. 17),8,Seong 2023,Seong 2024,-0.17,-0.59,0.26
+roughness,Figure 8 (p. 17),8,Lin 2020,Lin 2021,0.01,-0.54,0.56
+roughness,Figure 8 (p. 17),8,Demir-Dora 2024,Demir-Dora 2024,0.74,0.35,1.12
+roughness,Figure 8 (p. 17),12,Koizumi 2017 (12W),Koizumi 2018,-5.53,-6.57,-4.49
+roughness,Figure 8 (p. 17),12,Bolke 2019,Bolke 2019,-2.05,-2.62,-1.47
+roughness,Figure 8 (p. 17),12,Lee 2023,Lee 2023,-0.44,-0.84,-0.05
+roughness,Figure 8 (p. 17),12,Seong 2023,Seong 2024,-0.25,-0.68,0.17
+roughness,Figure 8 (p. 17),12,Schwartz 2019 (12W),Schwartz 2019,-0.16,-0.53,0.21
+roughness,Figure 8 (p. 17),12,Demir-Dora 2024,Demir-Dora 2024,0.71,0.32,1.09
