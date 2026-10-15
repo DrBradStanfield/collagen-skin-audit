@@ -1,0 +1,177 @@
+[
+ {
+  "trials": [
+   "Ito 2018",
+   "Nomoto 2020",
+   "Sangsuwan 2021"
+  ],
+  "checked": "re-extraction.csv lines 6 (Nomoto 2020 elasticity wk4), 8 (Nomoto 2020 elasticity wk8), 10 (Ito 2018 elasticity wk8), 47 (Nomoto 2020 hydration wk2), 61 (Nomoto 2020 hydration wk8); Sangsuwan has no re-extraction.csv row. corrections.csv ids E1 (Ito 2018 elasticity), E2 (Nometo 2020 elasticity), E4 (sangsuwan 2020 elasticity, incl. corrected_Time and the week-4 sensitivity values in notes), H3 (Ito 2018 hydration). Each was checked against rendered PDF pages: Ito p3 (Fig 1, Table 1) and p4 (Table 2, text, Fig 2A); Nomoto p5 (Table 3) and text (randomised 23/22, analysed 20/19); Sangsuwan p3 (randomisation text, CH n=17, placebo n=19) and p4 (Table 2, journal p993). I recomputed Hedges' g. Ito: endpoint 0.074, change 0.973 from 0.018±0.065 (n=10) vs -0.039±0.047 (n=11). Nomoto: elasticity wk4 endpoint 0.56, change 0.246 (from the CI); elasticity wk8 1.205/0.671; hydration wk2 0.174/-0.096; hydration wk8 1.22/1.07. Every value matches the audit's endpoint_g and change_g after rounding.",
+  "agreed": 65,
+  "discrepancies": []
+ },
+ {
+  "trials": [
+   "Inoue 2016",
+   "Sugihara 2015",
+   "Choi 2014"
+  ],
+  "checked": "re-extraction.csv lines 3, 5, 7, 12, 24, 27, 33, 35, 48 and 55 (Inoue 2016), lines 9, 25 and 34 (Sugihara 2015), and lines 17 and 74 (Choi 2014). That is 15 rows, with n1/m1/sd1/n2/m2/sd2, sd_note, time point, arm, site and direction checked on each. corrections.csv ids E3 ('Inno 2016', line 4), H2 ('Inoue 2016', line 13) and E5 ('choi 2014', line 6), with every corrected_* value and the source_in_original_paper text checked. I read each value from the papers myself. Inoue: the Table 1-4 text layer of the PDF. Sugihara: PDF pages 2-3 rendered as images, since the PDF is a scan. Choi: PDF pages 4-5 rendered as images (Tables II and III). I recomputed every endpoint_g and change_g (Hedges' g, plus the 95% confidence interval for each best_g), the cheek and canthus alternative values in the notes, the baseline-imbalance SD fractions, and the pooled L-CP+H-CP arms in E3 and H2. All of them reproduce. E3 pooled arm: 0.757667 / 0.049437. H2 pooled arm: 30.989259 / 12.670410. Roughness g is stored as negative-favours-collagen, which is the convention documented in the README and in batool-reanalysis.R, so the sign is consistent. Files: data/batool-2026/re-extraction.csv and corrections/corrections.csv.",
+  "agreed": 108,
+  "discrepancies": []
+ },
+ {
+  "trials": [
+   "Genovese 2017",
+   "Koizumi 2018",
+   "Czajka 2018"
+  ],
+  "checked": "re-extraction.csv lines 15, 31, 40 and 78 (Koizumi 2018: R2 elasticity at week 12, R1 roughness at weeks 6 and 12, hydration at week 12). These are the only rows for the three trials. Genovese and Czajka have no rows in re-extraction.csv, which was confirmed by grepping the trial column and the product and sponsor names. corrections.csv E6 (genovase 2017), E7 (koizuma 2018) and E9 (czaka 2018). All were checked against the PDFs in blind-papers: Koizumi Table 2 (p. 401), Genovese Results (p. 150), and Czajka section 3.2 and the Fig. 2 legend (p. 102). For every row, the SEM-to-SD arithmetic was recomputed and Hedges' g was recalculated. Koizumi: g = 0.93 (0.44 to 1.42), -0.10, -0.93 and 0.87, all matching the CSV. Corrections: E6 g = 0.35 (-0.01 to 0.71), E7 g = 0.35, E9 g = 1.42 (published version 9.44). E7's delta-method SDs (0.050352, 0.055328) were verified, and the same method reproduces the 9.167 and 7.70 cited for the hydration row. Agreed count of 46 = 24 inputs (n, mean, SD for both arms × 4 rows) + 4 g values + 18 corrected n, mean and SD values in E6, E7 and E9. Every mean and n matches the paper and the blind extraction exactly. SEM is the right scale every time (Koizumi Table 2 footnote, Genovese Statistics, Czajka Fig. 2 legend). Arm assignment, time points and source citations are all correct. Sign check: roughness rows 31 and 40 report g as -0.10 and -0.93, i.e. collagen minus control. That matches the roughness sheet's own stated convention ('negative = favours collagen', as in the Callegari rows) and Batool's roughness analysis. It does not match the task brief's 'positive favours collagen'. This is consistent within the audit, so it is not counted as a discrepancy, but anyone pooling these rows across sheets needs to know about it. Caveats raised by the blind extractor that the audit already handles or that do not affect values: (1) Genovese and Czajka measure elasticity as Young's modulus, where higher arguably means stiffer skin. E6 follows the authors' direction and says so in its notes. (2) Czajka's arms differed at baseline (7.9 vs 6.9, P<.05). E9 says it uses an endpoint comparison plus a sensitivity analysis that removes the baseline difference. (3) Czajka's subgroup n values disagree between the text and the figure (45/16 vs 44/17). The audit does not use the subgroups. (4) In Genovese the between-group difference at day 90 was not significant, which fits the corrected g with a CI that crosses zero (-0.01 to 0.71).",
+  "agreed": 46,
+  "discrepancies": [
+   {
+    "trial": "Koizumi 2018",
+    "audit_row": "corrections.csv E7 vs re-extraction.csv line 15",
+    "field": "effect-size basis for R2 gross elasticity at week 12 (the same paper cells give different g in the two audit files)",
+    "audit_value": "E7: derived endpoints, collagen 37/0.761536/0.050352 vs placebo 34/0.742904/0.055328 (baseline × (1 + % change), with delta-method SD), g = 0.35 (-0.12 to 0.82). Line 15: % change 37/4.32/3.248 vs 34/0.938/3.948 (SEM × sqrt(n)), g = 0.93 (0.44 to 1.42)",
+    "blind_value": "Only % change from baseline is available: collagen 4.320 ± 0.534 SEM (n=37) vs placebo 0.938 ± 0.677 SEM (n=34); baselines 0.730 ± 0.007 vs 0.736 ± 0.008. No endpoint values are reported",
+    "verdict": "both_defensible",
+    "evidence": "Koizumi Table 2 (p. 401, mean ± SEM) gives raw baselines, then % change from baseline at weeks 6 and 12. No week-12 endpoint means or SDs are printed. Line 15 uses the printed cells directly. E7 reconstructs endpoints so they sit on the same scale as Grimes and Mahto's Data S1 entry, and its arithmetic reproduces exactly (0.730 × 1.0432 = 0.761536; delta-method SEM 0.00828 × sqrt(37) = 0.05035). This is not an extraction error. Both rows read the paper correctly. They differ because E7's endpoint SD contains between-person baseline variance and the change SD does not",
+    "impact": "g for the same outcome differs by about 0.58 between the two re-analyses (0.35 in the Grimes and Mahto correction set vs 0.93 in the Batool re-extraction). Neither published claim is wrong, but a critic comparing the two files will see Koizumi elasticity at two different sizes. The audit's methods notes should say the gap comes from the scale choice (endpoint vs change), each made to match the form the original meta-analysis used. Also, baseline × (1 + mean % change) is only approximately the mean endpoint (the mean of a ratio is not the ratio of means). The bias is small here because baselines are tight (SEM about 1%)"
+   }
+  ]
+ },
+ {
+  "trials": [
+   "Kim 2018",
+   "Kim 2022",
+   "Seong 2024"
+  ],
+  "checked": "re-extraction.csv lines 4, 11, 23 (Seong 2024 elasticity R2 at weeks 4, 8 and 12), 28, 37, 43 (Seong 2024 roughness Ra at weeks 4, 8 and 12), 14 (Kim 2018 R2 elasticity at week 12: endpoint plus Fig 4A change SEM to SD), 16 (Kim 2022 R2 at week 12), 73 (Kim 2018 hydration at week 12: endpoint plus Fig 2 change SEM to SD); corrections.csv E8 (kim 2018 elasticity) and H4 (kim 2018 hydration). Kim 2018 has no Batool-label row of its own; it appears as 'Kim 2021' and is identified as Kim 2018 in lines 14 and 73. Each value was checked against PDF page images I rendered myself: Kim 2018 Fig 1 p4, Fig 2 p6 (also at 300 dpi), Table 4 p7, Table 6 p8, Table 7 and Fig 4 p9; Kim 2022 Table 1 p4 and Table 2 p6; Seong 2024 section 3.1 p3, Table 3 p5, Table 4 p7. All 9 endpoint g values and both change g values (lines 14 and 73) were recomputed as Hedges' g and match to 2 decimals: 0.28, 0.42, 0.61, -0.03, -0.17, -0.25, 0.38/0.62, 0.46, 0.64/0.88. The SEM-to-SD arithmetic checks out: 0.015 x sqrt(26) = 0.077, 0.012 x sqrt(27) = 0.062, 2.44 x sqrt(26) = 12.44, 1.24 x sqrt(27) = 6.44. Roughness g carries a raw sign (negative favours collagen). This is the documented file convention (README lines 140 and 288; batool-reanalysis.R line 133), so it is not an error. Every source citation (table, page, per-protocol n) was confirmed. The blind extraction agrees with the audit on every n, mean, SD, time point, arm and direction. Its only difference is a chart-read placebo SEM for Kim 2018 hydration change (about 1.1 against the audit's 1.24). At 300 dpi the bar runs 4.59 to about 5.8, which supports the audit, and the effect on change g is 0.003, under the reporting threshold. One note-level problem was found and is listed below.",
+  "agreed": 74,
+  "discrepancies": [
+   {
+    "trial": "Kim 2022",
+    "audit_row": "re-extraction.csv line 16 (notes column)",
+    "field": "notes: basis of the between-group t-test p-value",
+    "audit_value": "Between-group p: 0.111 (t-test on week 12) and 0.035 (adjusted mixed model)",
+    "blind_value": "Intergroup R2: two-sample t-test p=.111, GLMM p=.035 (data basis not stated)",
+    "verdict": "blind_correct",
+    "evidence": "Table 2 (PDF p6, journal p1151), R2 row: test 0.72±0.07 vs placebo 0.69±0.06 at 12 weeks, N=43/41. Footnote *: 'Compared between the groups; P-value according to the two-sample t-test'. The table never says the test was run on week-12 values. Running a two-sample t-test on the printed week-12 means and SDs gives t ≈ 2.1, p ≈ 0.04, not 0.111. The audit's own endpoint g of 0.46 (95% CI about 0.02 to 0.89) also excludes zero. So p=0.111 cannot be a t-test on week-12 endpoints. It was most likely run on change or % change scores (7.5% vs 3.0%).",
+    "impact": "None on n1/m1/sd1/n2/m2/sd2 or on endpoint_g 0.46, which is correct. The note describes the paper's statistics wrongly: it implies the week-12 endpoint comparison was non-significant, while our own endpoint g excludes zero. A critic comparing the two would see a contradiction. Suggested rewording: 'two-sample t-test p=0.111 (basis not stated; inconsistent with the week-12 endpoints, so probably on change)'. No published effect or pooled claim changes."
+   }
+  ]
+ },
+ {
+  "trials": [
+   "Yoon 2014",
+   "Tak 2021",
+   "Jung 2021"
+  ],
+  "checked": "re-extraction.csv lines 21 (Yoon 2014 elasticity R2 wk12), 46 (Yoon 2014 hydration 'wk2' = wk4), 64 (Tak 2021 hydration wk12) and 75 (Yoon 2014 hydration wk12); there are no Jung rows in re-extraction.csv. corrections.csv ids E10 (Yoon elasticity), H1 (tak 2021 hydration), H5 (yoon 2014 hydration dose) and H6 (jung 2020 = Jung 2021 hydration). I checked each against the papers myself: Yoon PDF pages 1-4 (Table 1, Results text p812, Fig 1, Fig 2), Tak PDF pages 3-6 (Methods, CONSORT Fig 1, Tables 1-2, Fig 2) and the Jung XML (Results 3.1, 3.2.1 and 3.3.1, Table 1, Table 2 headers, figure legends). Agreed: 44 of 44 extracted input values (24 n/m/sd cells in re-extraction plus 20 corrected_* and dose cells in corrections). I also recomputed all 5 g values that the inputs allow, and every one matches: Tak endpoint -0.18 and change 0.19; Yoon R2 change 0.68, hydration wk4 0.18 and wk12 0.28. The SEM-to-SD arithmetic is correct: 0.0170 and 0.0167 x sqrt(22) = 0.080 and 0.078; 2.52, 2.76, 2.93 and 2.23 x 4.690 = 11.82, 12.95, 13.74 and 10.46. The E10 arithmetic is correct: 0.6097+0.0252 = 0.6349 and 0.6446-0.0294 = 0.6152. The H6 arithmetic is correct: 39.32+2.71 = 42.03 and 39.82 x 1.0283 = 40.947. Doses are correct: Yoon 4 x 0.75 g = 3 g/day. Arms (H1 un-swap), time points (Yoon has no week-2 visit, only weeks 4 and 12) and directions (higher is better for R2 and Corneometer) all agree with the blind extraction and the papers. The blind chart reads for Yoon Fig 1 and Fig 2 are all within about 3% of the audit's digitised values; the largest gap is the treatment wk4 hydration half-bar, 2.6 vs 2.52, which moves g by less than 0.01. Jung n 24/20: the audit cites the Figure 1 flowchart, which is an image missing from the XML, but Table 2's header (Placebo N=20, APCP N=24) independently confirms the split, and the blind extraction inferred the same 24/20. The blind extraction also gives Tak elasticity and wrinkle rows and Jung roughness rows, but the audit has no matching rows for those, so there was nothing to compare.",
+  "agreed": 44,
+  "discrepancies": [
+   {
+    "trial": "Yoon 2014",
+    "audit_row": "re-extraction.csv lines 21, 46, 75",
+    "field": "sd1/sd2 (SD/SEM handling of Fig 1 and Fig 2 error bars)",
+    "audit_value": "Unlabelled half error bars treated as SEM and converted, SD = half-bar x sqrt(22). Line 21: 0.080/0.078. Line 46: 11.82/12.95. Line 75: 13.74/10.46.",
+    "blind_value": "Same half-bars recorded raw, with dispersion_type 'unclear' and no conversion. Line 21: 0.017/0.016. Line 46: 2.6/2.8. Line 75: 2.9/2.2.",
+    "verdict": "audit_correct",
+    "evidence": "The legends of Fig 1 (PDF p3, journal p812) and Fig 2 (PDF p4, journal p813) do not say whether the bars are SD, SEM or CI. The reported P values settle it. For R2 at 12 weeks, the difference is 0.0546. With SEMs of 0.0170 and 0.0167, the standard error of the difference is 0.0238, t is about 2.3 and p is about 0.03, which matches the printed Mann-Whitney P=0.035. Read as SDs, t would be about 10.7 and p far below 0.0001. For hydration at 12 weeks, the difference is 3.46. As SEMs, t is about 0.94, which matches the printed N.S. As SDs, t is about 4.4 and p < 0.001, which contradicts the printed N.S. The SDs this conversion gives (10.5 to 13.7) are close to the baseline Corneometer SDs in Table 1 (13.2 and 14.0). Both extractions agree on the raw numbers; only the blind extraction's decision to leave the bar type 'unclear' differs, and that is a refusal to commit, not a competing reading. The audit's sd_note already flags this as an inference and gives the 95% CI alternative (g 0.34 at wk4, 0.55 at wk12).",
+    "impact": "None on the audit's g values (0.68, 0.18 and 0.28 stand). If the raw half-bars were used as SDs, as Batool did for line 75, g would be inflated: hydration wk12 becomes 1.30, about 4.7 times too large. This supports the audit's 'probably wrong' verdict on Batool's Yoon hydration row. The published claims are unchanged."
+   }
+  ]
+ },
+ {
+  "trials": [
+   "Lee 2023",
+   "Ahi 2024"
+  ],
+  "checked": "re-extraction.csv lines 2 (Lee 2023 elasticity wk4, CoR change, plus K change in sd_note), 26/36/42 (Lee 2023 PRIMOS Ra change at wk 4/8/12), 50/58/72 (Lee 2023 Corneometer face endpoint at wk 4/8/12, plus the change SDs read off Fig. 2), and 20 (Ahi 2024 Cutometer R2 at day 84). Lines 51 and 62 are Lee 2025, which is a different trial (n 35/35), so I left them out. corrections.csv has no rows for Lee 2023 or Ahi 2024: no study_in_DataS1 value contains 'lee' or 'ahi'. I checked everything against the PDF text (pdftotext) and rendered images. For Lee: Tables 3 and 5 to 8, plus Fig. 2 at 500 dpi, where I measured the error bars in pixels. For Ahi: Tables 1 and 3, the Fig. 1 flow diagram and Fig. 6. I recomputed Hedges' g for all 8 rows and every printed endpoint_g, change_g and CI matched. Lee: CoR 0.05 (-0.34; 0.44); K -0.06; Ra -0.56, -0.22 and -0.44; hydration endpoint 0.09, 0.29 and 0.43; hydration change 0.81, 1.05 and 0.94. Ahi: 0.21 (-0.25; 0.67). Measured Fig. 2 half-ranges (CPNS / placebo): week 4, 4.06 / 3.50; week 8, 4.96 / 3.45; week 12, 6.76 / 4.85. These match the audit's 4.07/3.50, 4.99/3.46 and 6.76/4.87. The audit's SEM reasoning holds: Table 3 'S.D' values are SEMs (0.87 x sqrt46 = 5.90 vs Table 5's 5.92), and Tables 5 and 7 to 8 are SDs. Both extractions agree on this, so no SEM-to-SD conversion is involved. Roughness rows give raw g as collagen minus control, so negative favours collagen. That matches the stated lower-is-better rule and agrees with the blind extraction's signs. A note that is not a disagreement: both extractions use Ahi n = 36/36 (ITT). Fig. 1 shows 3 lost per arm and PP 31/33, and the methods say missing endpoints were handled by available-case analysis, so the true day-84 n is probably 33/33. That leaves g unchanged at 0.21; the CI widens slightly to about (-0.27; 0.70). The audit's note cites the text's '64 completed' contradiction but not the Fig. 1 per-arm numbers.",
+  "agreed": 48,
+  "discrepancies": [
+   {
+    "trial": "Lee 2023",
+    "audit_row": "re-extraction.csv line 72 (hydration wk 12, change SD in sd_note)",
+    "field": "Change SD for the CPNS arm at week 12, read from Fig. 2",
+    "audit_value": "6.76",
+    "blind_value": "about 6.4 (error-bar top read as ~13 around a mean of 6.6; dispersion left null)",
+    "verdict": "audit_correct",
+    "evidence": "Fig. 2 (PDF p6, journal p3201) rendered at 500 dpi: the zero line is at y=709 and 14 AU at y=137, so 40.9 px/AU. The CPNS week-12 error bar runs from y=162 (+13.37) to y=715 (-0.15), a half-range of 6.76 around the Table 5 mean change of 6.63. The blind read rounded the top down to 13.",
+    "impact": "change_g 0.94 (audit) vs 0.97 with the blind reading, a difference of 0.036. That is under the 0.05 threshold. best_g for this row is the endpoint (0.43), which this does not touch. No published claim affected."
+   },
+   {
+    "trial": "Lee 2023",
+    "audit_row": "re-extraction.csv line 2 (elasticity wk 4), best_basis",
+    "field": "Direction of the ballistometer CoR parameter (source of 'higher = better')",
+    "audit_value": "'CoR chosen because its direction is defined (higher = more elastic recovery)'",
+    "blind_value": "The paper does not state a direction for any ballistometer parameter; direction comes from the authors' 'improvement' language",
+    "verdict": "both_defensible",
+    "evidence": "Methods 2.9 (PDF p4) only says 'CoR is the coefficient of restoration'. The Table 8 footnote (PDF p8) says 'coefficient of restitution'. Neither says higher is better. Higher-is-better follows from the physics (more rebound energy returned) and from the results in section 3.5, which count CPNS +0.008 vs placebo -0.005 at week 12 as a 1.60-fold improvement. So the direction is well supported but inferred rather than 'defined' by the paper. The audit's wording overstates this a little and could say 'implied by the definition and by the authors' results'.",
+    "impact": "None on the numbers. Week-4 CoR g is 0.05 (-0.34; 0.44), so it stays non-significant whichever way the sign goes, and the 'wrong' verdict against Batool's -0.88 (CPNS week 4 compared with CPNS week 8) holds whichever parameter is used."
+   }
+  ]
+ },
+ {
+  "trials": [
+   "Bolke 2019",
+   "Schwartz 2019",
+   "Zmitek 2020"
+  ],
+  "checked": "re-extraction.csv lines 18 (Bolke elasticity T12), 19 (Schwartz elasticity R5 wk12), 22 (Zmitek elasticity VE wk12), 32 (Schwartz texture/smoothness wk6), 41 (Bolke roughness Rz T12), 44 (Schwartz texture/smoothness wk12), 65 (Schwartz MoistureMeter wk12), 70 (Zmitek hydration wk12) and 76 (Bolke hydration T12). That is 9 rows x 6 inputs (n1, m1, sd1, n2, m2, sd2) = 54 values. Line 50 (Lee 2023) only matched the grep because its note mentions Bolke, so I left it out. corrections.csv has no rows for these trials: its 16 rows cover only Inno/Inoue, Ito, Nometo, Yoon, choi, czaka, genovase, jung, kim, koizuma, sangsuwan and tak. I checked every value against the PDF text myself: Bolke §3.3–3.5 (PDF p6–7) and Fig 6 (p9, rendered and inspected); Schwartz Tables 7–10 (PDF p8, 9, 12); Zmitek §3.3, §3.4 and §3.6 (PDF p7–8). I also recomputed Hedges' g for every row: Bolke hydration endpoint 1.53 and change 2.01; elasticity endpoint 1.16 and change 1.36; roughness -2.05 and -2.86. Schwartz R5 0.50 and 0.52; moisture -0.03 and -0.08; texture wk6 -0.55 and -0.09; texture wk12 -0.16 and +0.06. Zmitek VE -0.39 and hydration 0.12. All match the audit to two decimals. Batool's mis-pulled controls are correctly identified. Bolke's 0.71 ± 0.06 is the placebo T0. Schwartz's 0.20 ± 0.07 is the intervention baseline (the placebo baseline is 0.22 ± 0.06). Zmitek's -6.08 cannot be reproduced. Sign convention for the roughness rows (lines 32, 41, 44): g = collagen minus control, so negative favours collagen. This is applied the same way in every row and matches Batool's convention. It is not an error, but it is the opposite sign of the brief's 'positive favours collagen' for this outcome. The audit's flag on the Schwartz week-6 texture value holds up. 6.15 - 4.48 = 1.67 disagrees with Table 8's -1.30 and with the 20.67% improvement (about 4.88). 4.48 is probably a misprint for 4.85, which would give an endpoint g of -0.27. The audit's best_g already uses the change score, so this needs no change. The blind extraction copied 4.48 without flagging it.",
+  "agreed": 54,
+  "discrepancies": [
+   {
+    "trial": "Bolke 2019",
+    "audit_row": "re-extraction.csv line 18",
+    "field": "sd_note: conversion of the digitised Figure 6B standard error of the mean (SEM) to standard deviation (SD), elasticity percent change",
+    "audit_value": "verum +18.6%, SEM 1.9 -> SD 11.3; placebo +6.1%, SEM 1.0 -> SD 6.2 (SD = SEM x 6)",
+    "blind_value": "Not extracted. The blind extraction gave no T0 to T12 R2 percent change; it reported only the T12 to T16 decline of -6.38% ± 7.01%.",
+    "verdict": "both_defensible",
+    "evidence": "Figure 6B (PDF p9; legend says error bars are SEMs), inspected by eye: the verum bar is about 18.5% with an error bar of about 2, and the placebo bar is about 6% with an error bar of about 1. The digitised means hold up. The note's arithmetic does not match its rounded inputs: 1.9 x sqrt(36) = 11.4, not 11.3, and 1.0 x 6 = 6.0, not 6.2. The SDs were presumably computed from unrounded digitised SEMs (about 1.88 and 1.03). The SEM label is consistent with the hydration panel, where an SEM of about 1.9 x 6 gives about 11.5, the SD printed in the text.",
+    "impact": "None in practice. With SD 11.4 and 6.0, change_g = 12.5 / 9.11 x 0.989 = 1.36, the same as the audit. The endpoint g (1.16, used as best_g) is from printed SDs and is unaffected. This is a cosmetic fix to the note so that it reconciles exactly (state the unrounded SEMs)."
+   }
+  ]
+ },
+ {
+  "trials": [
+   "Demir-Dora 2024",
+   "Zague 2025",
+   "Lin 2021"
+  ],
+  "checked": "re-extraction.csv lines 29 (Lin texture wk4), 30 (Demir-Dora roughness wk4), 38 (Lin texture wk8), 39 (Demir-Dora roughness wk8), 45 (Demir-Dora roughness wk12), 49 (Demir-Dora hydration wk4), 52 (Zague hydration d28), 53 (Lin hydration wk4), 57 (Lin hydration wk8), 59 (Demir-Dora hydration wk8), 60 (Zague hydration d56), 66 (Demir-Dora hydration wk12), 68 (Zague hydration d84). These are all of the re-extraction rows for the three trials; none are elasticity rows. corrections.csv has no rows for Demir-Dora, Zague or Lin. Its studies are Inno/Inoue, Ito, Nometo, Yoon, choi, czaka, genovase, jung, kim, koizuma, sangsuwan and tak, so there was nothing to check there. I checked each value myself against the paper. Demir-Dora Table 1 (PDF p7): every n, mean and SD matches, including the visit-specific n of 56 at week 12 and for roughness (the group heading says 57). Section 2.5 (PDF p5) states that higher roughness values mean amelioration, which supports the audit's sign flip. Lin Table 2 (PDF p4, journal p191): every n, mean and SD for hydration and texture matches. The texture direction contradiction the audit flags is real: section 2.6 calls improvement 'positively correlated' with the value, but Results 3.3 (PDF p5) treats a decrease as improvement. Zague Fig. 3 (PDF p5): I rendered the figure. Grey bars are Col-OP and white bars are placebo, and the arm assignment and all 12 digitized means and SDs agree with the blind chart read to within 2% (for example placebo T28 67.44 vs 67.3). The one exception is the placebo T28 SD (audit 9.15, blind 9.4, a 2.7% gap), which changes g by only 0.008. All three citations are correct: J Med Food 28(9):869-876, J Cosmet Dermatol 20(1):188-194, J Clin Med 13:5370. I recomputed Hedges' g for all 13 rows and each matches endpoint_g to within 0.01. The values were 0.835/0.736/0.707 for the Demir-Dora roughness rows before the flip, 0.335/0.740/0.296 for Demir-Dora hydration, 0.607/1.104 for Lin hydration, -0.014/+0.010 for Lin texture, and 0.36/0.43/0.38 for Zague. Using the blind chart reads instead, Zague comes out at 0.352/0.441/0.379. One convention to note: for roughness the audit uses negative = favours collagen, the same as Batool. This applies consistently to Demir-Dora (raw g flipped) and Lin (raw g kept, lower = better). It is a deliberate convention, not an error.",
+  "agreed": 78,
+  "discrepancies": []
+ },
+ {
+  "trials": [
+   "Proksch 2025",
+   "Morakul 2024",
+   "Baek 2025"
+  ],
+  "checked": "re-extraction.csv lines 54 (Proksch 2025 hydration wk4), 56 (Morakul 2024 hydration wk8), 63 (Proksch 2025 hydration wk8), 67 (Baek 2025 hydration wk12), 77 (S1A Morakul 2024 hydration wk4). For each row I checked n1/m1/sd1/n2/m2/sd2, the sd_note (SEM to SD conversion), the source citation, and recomputed endpoint_g, change_g and best_lb/ub. corrections.csv has no rows for Proksch, Morakul or Baek: its 16 rows cover Inno/Inoue/Ito/Nometo/Yoon/choi/czaka/genovase/jung/kim/koizuma/sangsuwan/tak only. Papers checked directly: Proksch Table 4 (PDF p9; footnote 'mean ± SD for 33 study participants'), Fig. 2 flow chart (PDF p9), no drop-outs (PDF p8), forearm site (PDF p6). Morakul Table 2 (PDF p8; footnote 'mean ± SEM (n = 36 per group)'), face rows. Baek Results 2.1/2.2 text (PDF p2-3), Fig. 1 flow chart and Fig. 2A/2B. I rendered the PDF page at 200 dpi and read the control bars myself.",
+  "agreed": 29,
+  "discrepancies": [
+   {
+    "trial": "Baek 2025",
+    "audit_row": "re-extraction.csv line 67",
+    "field": "sd2 (control week-12 Corneometer SD, chart-digitised)",
+    "audit_value": "42.15 +/- 5.2 (n 49)",
+    "blind_value": "42.2 +/- 5.0 (n 49)",
+    "verdict": "both_defensible",
+    "evidence": "The paper prints no numbers for the control follow-up; the value exists only as a bar in Fig. 2A (PDF p3). In my own render the control week-12 bar sits at about 42 and its error-bar cap at about 47, so an SD of 5.0 to 5.2 is within reading precision. The means agree (0.1% apart). The SDs differ by about 4%, but both are chart reads. The digitised change values agree within tolerance: audit 1.69 +/- 1.24 vs 0.17 +/- 0.82; blind 1.7 +/- 1.25 vs 0.17 +/- 0.8.",
+    "impact": "Endpoint g is 0.530 with the audit inputs and 0.532 with the blind inputs. Change g is 1.435 vs 1.447. Both are well under 0.05, so neither the row's verdict ('wrong'; Batool's 0.00) nor any published claim changes."
+   },
+   {
+    "trial": "Morakul 2024",
+    "audit_row": "re-extraction.csv lines 56 and 77 (paper_citation)",
+    "field": "citation page range",
+    "audit_value": "J Cosmet Dermatol 2024;23(12):4255-4267",
+    "blind_value": "J Cosmet Dermatol 2024;23:4256-4268",
+    "verdict": "audit_correct",
+    "evidence": "The PDF's first-page footer reads 'J Cosmet Dermatol. 2024;23:4255–4267.', and the page header is 4255. The paper's own suggested citation (text p. 4267) also gives 4255-4267. The blind extractor shifted the range by one page.",
+    "impact": "None. The citation text only; no effect on any g."
+   }
+  ]
+ }
+]

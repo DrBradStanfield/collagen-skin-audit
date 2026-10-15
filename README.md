@@ -15,7 +15,7 @@ Author: Brad Stanfield, MBChB, FRNZCGP (general practitioner, New Zealand). Corr
 
 I own a company that sells a dietary supplement containing hydrolysed collagen peptides. I also make health videos on YouTube, which earn revenue, including one that discusses these papers. The corrected results favour the kind of product I sell. No one funded this work. This audit was not registered in advance, and I did not decide beforehand which rows to check (see "How rows were chosen" below).
 
-I used AI tools (Anthropic's Claude and OpenAI's Codex) to help extract values from the trial reports, cross-check them and run the analyses. Separate AI review runs, not involved in the extraction, were asked to try to refute every re-extracted row and every correction. I checked the results and take responsibility for them. Please weigh the work with the conflict in mind; that is why every number is traceable to a published source.
+I used AI tools (Anthropic's Claude and OpenAI's Codex) to help extract values from the trial reports, cross-check them and run the analyses. Separate AI review runs, not involved in the extraction, were asked to try to refute every re-extracted row and every correction. I checked the results and take responsibility for them. As a final check, a separate run was given only the trial papers for the 26 trials behind the corrections and extracted every value blind; comparing it with this repository matched 546 values, and none of the mismatches changed a result ([`checks/`](checks/)). Please weigh the work with the conflict in mind; that is why every number is traceable to a published source.
 
 #### Terms used below
 - SMD (standardised mean difference): the difference between groups in standard-deviation units, computed here as Hedges' g. As a rough guide, 0.2 is small, 0.5 moderate and 0.8 large.
@@ -186,6 +186,8 @@ Batool removed two week-12 rows as "extreme negative outliers [29, 39]". Supplem
 #### Which value I used
 
 The primary analysis uses the endpoint SMD wherever a trial reports endpoints. It uses change from baseline only where that is all a trial reports (Koizumi and Yoon for all three outcomes, and Lee 2023 for elasticity and roughness). The Cochrane Handbook advises against mixing the two kinds of SMD, so this keeps nearly every row on the same scale. The sensitivity analyses drop the change-only rows, use change scores wherever reported, and use a row-by-row choice (`best_g`).
+
+Koizumi reports elasticity only as percent change from baseline. In Analysis 1 I keep Grimes and Mahto's form for it, an endpoint rebuilt as baseline × (1 + change), which gives 0.35. Here I use the printed change scores, which give 0.93. Both read the same cells correctly; the gap is the scale, because the rebuilt endpoint's SD carries the spread between people at baseline and the change score's SD doesn't.
 
 `best_g` is a judgement call, made row by row and recorded with its reason in `best_basis`. It usually takes the change score where the arms differed at baseline by about a third of an SD or more and the paper prints change SDs, and the endpoint otherwise. The exceptions are noted in the file and run both ways.
 
