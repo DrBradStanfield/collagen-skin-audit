@@ -13,14 +13,15 @@ Author: Brad Stanfield, MBChB, FRNZCGP (general practitioner, New Zealand). Corr
 
 ## Conflict of interest
 
-I own a company that sells a dietary supplement containing hydrolysed collagen peptides. I also make health videos on YouTube, which earn revenue, including one that discusses these papers. The corrected results favour the kind of product I sell. No one funded this work. This audit was not registered in advance, and I did not decide beforehand which rows to check (see "How rows were chosen" below).
+I own a company that sells a dietary supplement containing hydrolysed collagen peptides. I also make health videos on YouTube, which earn revenue, including one that discusses these papers. The corrected results favour the kind of product I sell. No one funded this work. This audit was not registered in advance, and I did not decide beforehand which rows to check (see "How rows were checked" below).
 
-I used AI tools (Anthropic's Claude and OpenAI's Codex) to help extract values from the trial reports, cross-check them and run the analyses. Separate AI review runs, not involved in the extraction, were asked to try to refute every re-extracted row and every correction. I checked the results and take responsibility for them. As a final check, a separate run was given only the trial papers for the 26 trials behind the corrections and extracted every value blind; comparing it with this repository matched 546 values, and none of the mismatches changed a result ([`checks/`](checks/)). Please weigh the work with the conflict in mind; that is why every number is traceable to a published source.
+I used AI tools (Anthropic's Claude and OpenAI's Codex) to help extract values from the trial reports, cross-check them and run the analyses. Separate AI review runs, not involved in the extraction, were asked to try to refute every re-extracted row and every correction. I checked the results and take responsibility for them. As a final check, a separate run was given only the trial papers for the 26 trials behind the corrections and extracted every value blind; comparing it with this repository matched 546 values, and none of the mismatches changed a result ([`checks/`](checks/)). The corrections added on 16 October 2026 got the same blind check separately (see "How rows were checked"). Please weigh the work with the conflict in mind; that is why every number is traceable to a published source.
 
 #### Terms used below
 - SMD (standardised mean difference): the difference between groups in standard-deviation units, computed here as Hedges' g. As a rough guide, 0.2 is small, 0.5 moderate and 0.8 large.
 - REML: restricted maximum likelihood, the usual way of fitting a random-effects model.
 - Cutometer R2 ("gross elasticity"): how far the skin springs back after suction; higher is better.
+- Cutometer R5 ("net elasticity", Ur/Ue): the immediate recovery as a share of the elastic stretch; higher is better.
 
 ---
 
@@ -30,20 +31,35 @@ I used AI tools (Anthropic's Claude and OpenAI's Codex) to help extract values f
 
 Grimes and Mahto found real problems in two earlier meta-analyses, de Miranda 2021 and Pu 2023: standard errors (SEM) used as standard deviations (SD), incompatible measures pooled together, and wrong sample sizes. They also published their data and code, which is what made this check possible.
 
-Their dataset has errors too. Every one is listed in [`corrections/corrections.csv`](corrections/corrections.csv) with its source table and page.
+Their dataset has errors too. Every one is listed in [`corrections/corrections.csv`](corrections/corrections.csv) with its source table and page. I have now checked every row of Data S1 against its paper.
 
 - Arms reversed in eight trials. In seven, the collagen and control values are the wrong way round: Ito 2018, Nomoto 2020, Sangsuwan 2021, Choi 2014, Genovese 2017 and Koizumi 2018 (elasticity), and Tak 2021 (hydration). In the eighth, Inoue 2016 (elasticity), the placebo mean is in the collagen column and the high-dose collagen mean is in the control column.
 - Kim 2018: a wrinkle-roughness score is entered as elasticity.
 - Yoon 2014: absolute changes in R2 are treated as proportional changes, and the dose per tablet is entered as the dose per day.
+- Miyanaga 2021 (hydration): absolute changes in skin capacitance are treated as percentage changes.
 - Czajka 2018: SEMs are entered as SDs, the collagen arm's baseline is entered as the control's endpoint, and the collagen n is 69 instead of 61.
+- Campos 2015 (elasticity): the paper shows R5 only as a bar chart with unlabelled error bars, and Data S1 reads the bars as SDs, as Pu 2023 did. I think they are more likely 95% confidence intervals or SEMs (see below).
+- Asserin 2015 and di Cerbo 2015: the SDs entered don't match the SEM bars drawn in the papers' figures. Asserin's are too small, and only the stronger of its two collagen arms is used; di Cerbo's hydration SDs are about three times too large. di Cerbo's means are also misread slightly, and its 4-week dosing period is entered as 2 weeks.
 - Jung 2021: the placebo's baseline is entered as its endpoint, and the collagen SD is the baseline SD plus the change SD.
 - Inoue 2016 (hydration): one collagen arm's mean is given the sample size of both arms.
-- Sample sizes: wrong for Ito 2018, and for Kim 2018 hydration.
+- Sample sizes: wrong for Ito 2018 and Kim 2018 hydration; swapped between arms for Sugihara 2015; one too many in Schwartz 2019's control.
+- Dose: Schwartz 2019's dose per capsule is entered as the dose per day. Dose errors affect only the dose meta-regressions.
 
 #### The errors don't all run one way
-- Seven of the eight reversals, the Kim elasticity row and the Yoon means make collagen look worse.
-- The Tak reversal, Czajka, Jung, the Inoue hydration mean and the Kim hydration sample sizes make it look better.
+- Seven of the eight reversals, the Kim elasticity row, the Yoon means and the Miyanaga and di Cerbo hydration rows make collagen look worse.
+- The Tak reversal, Czajka, Campos, Asserin, Jung, the di Cerbo elasticity row, the Inoue hydration mean and the Kim hydration sample sizes make it look better.
 - Czajka is the largest single distortion in the dataset (Hedges' g about 9.4 as entered).
+
+#### The Campos error bars
+
+Campos's R5 values exist only as bars in Figure 1, and the paper doesn't say what the error bars are. Data S1 reads them as SDs, which gives g = 2.17, the largest positive elasticity row once Czajka is corrected. This is an inference either way:
+- As SDs, the baseline bars (about 0.017 on means of 0.31 to 0.34) would be several times tighter than R5 SDs in other collagen trials (Schwartz 2019: 0.06 to 0.15; Seong 2024: about 0.08 to 0.10), and the maltodextrin placebo arm would have improved by about 7 baseline SDs in 90 days.
+- As SEMs (g = 0.40), the spread is plausible, but the day-90 difference between groups would be significant only if the paper tested change scores, and it says R5 rose significantly compared with placebo.
+- As 95% confidence intervals (g = 0.81), both the spread and the significance claim fit. I use this reading; the SD and SEM readings are sensitivity analyses below.
+
+#### Shared placebo group
+
+Sugihara 2015 and Inoue 2016 report the same placebo group, with identical values, the same hospital and the same dates. Data S1 includes both trials, so those 26 controls count twice in each outcome. Excluding Sugihara is run as a sensitivity analysis.
 
 #### The reversals were not carried over from the earlier meta-analyses
 - Pu 2023 has all 8 trials the right way round.
@@ -57,15 +73,17 @@ Grimes and Mahto report dose meta-regressions, not pooled effects. The "as publi
 
 | Outcome | My pooling of Data S1 as published | Corrected |
 |---|---|---|
-| Elasticity (k = 18) | 0.37 (95% CI −0.74 to 1.48), p = 0.51 | 0.63 (0.34 to 0.92), p < 0.001 |
+| Elasticity (k = 18) | 0.37 (95% CI −0.74 to 1.48), p = 0.51 | 0.55 (0.32 to 0.78), p < 0.001 |
 | Elasticity, Cutometer R2 only (k = 10) | | 0.61 (0.37 to 0.84) |
-| Hydration (k = 16) | 0.52 (0.28 to 0.76) | 0.48 (0.22 to 0.74) |
+| Hydration (k = 16) | 0.52 (0.28 to 0.76) | 0.56 (0.28 to 0.83) |
 
-The trials vary a lot. For the corrected data, the 95% prediction intervals include zero: elasticity −0.47 to 1.74 and hydration −0.40 to 1.35 (normal-based; the t-based intervals in `results.txt` are slightly wider).
+The trials vary a lot. For the corrected data, the 95% prediction intervals include zero: elasticity −0.28 to 1.38 and hydration −0.40 to 1.51 (normal-based; the t-based intervals in `results.txt` are slightly wider).
+
+An earlier version of this repository reported corrected elasticity as 0.63 (0.34 to 0.92) and hydration as 0.48 (0.22 to 0.74). That version left Campos, di Cerbo, Asserin, Miyanaga, Schwartz and Sugihara unchecked. Checking them moved elasticity down (mainly Campos) and hydration up (mainly Miyanaga and di Cerbo, partly offset by Asserin).
 
 #### Which corrections drive the elasticity result
 
-The published 0.37 is inflated by one error in collagen's favour (Czajka). With only that error fixed, Data S1 gives −0.04 (−0.54 to 0.46). The move to 0.63 comes from the elasticity reversals and the Kim and Yoon fixes, so the elasticity result depends on those corrections. Each one is sourced in `corrections.csv`. Replacing only the seven reversed elasticity rows with their corrected rows gives 1.01 (0.05 to 1.98). That also fixes Koizumi's SDs and Ito's sample size, which come with those rows.
+The published 0.37 is inflated by one error in collagen's favour (Czajka). With only that error fixed, Data S1 gives −0.04 (−0.54 to 0.46). The move to 0.55 comes from the elasticity reversals and the Kim and Yoon fixes, so the elasticity result depends on those corrections. Each one is sourced in `corrections.csv`. Replacing only the seven reversed elasticity rows with their corrected rows gives 1.01 (0.05 to 1.98). That also fixes Koizumi's SDs and Ito's sample size, which come with those rows.
 
 #### Sensitivity analyses, corrected elasticity
 
@@ -73,33 +91,43 @@ Full output is in [`analysis/results.txt`](analysis/results.txt).
 
 | Analysis | k | SMD (95% CI) |
 |---|---|---|
-| All rows | 18 | 0.63 (0.34 to 0.92) |
+| All rows | 18 | 0.55 (0.32 to 0.78) |
 | Cutometer R2 only (one device, one parameter) | 10 | 0.61 (0.37 to 0.84) |
 | Cutometer R2 only, excluding the untreated controls (Choi, Nomoto) | 8 | 0.52 (0.30 to 0.73) |
-| Excluding the untreated controls (Choi, Nomoto) | 16 | 0.56 (0.27 to 0.86) |
-| Only rows checked against the original paper | 12 | 0.63 (0.31 to 0.94) |
-| Excluding Campos (not checked; largest positive row) | 17 | 0.54 (0.30 to 0.79) |
-| Sangsuwan at week 4 (end of dosing) instead of week 8 | 18 | 0.64 (0.35 to 0.93) |
-| Excluding Tak 2021 (its "mm" measure may be lower-is-better) | 17 | 0.69 (0.41 to 0.97) |
-| Czajka with its baseline difference removed | 18 | 0.60 (0.33 to 0.87) |
-| Hartung-Knapp confidence interval | 18 | 0.63 (0.32 to 0.95) |
-| Leave-one-out range | 17 | 0.54 to 0.69 |
+| Excluding the untreated controls (Choi, Nomoto) | 16 | 0.48 (0.25 to 0.72) |
+| Campos error bars read as SDs, as in Data S1 | 18 | 0.62 (0.33 to 0.91) |
+| Campos error bars read as SEMs | 18 | 0.52 (0.30 to 0.75) |
+| Excluding Campos | 17 | 0.53 (0.29 to 0.78) |
+| Excluding di Cerbo (post-washout reading; device units unstated) | 17 | 0.56 (0.32 to 0.80) |
+| Excluding Sugihara (shares Inoue's placebo group) | 17 | 0.55 (0.30 to 0.79) |
+| Sangsuwan at week 4 (end of dosing) instead of week 8 | 18 | 0.56 (0.32 to 0.79) |
+| Excluding Tak 2021 (its "mm" measure may be lower-is-better) | 17 | 0.61 (0.39 to 0.82) |
+| Czajka with its baseline difference removed | 18 | 0.51 (0.31 to 0.71) |
+| Hartung-Knapp confidence interval | 18 | 0.55 (0.30 to 0.80) |
+| Leave-one-out range | 17 | 0.48 to 0.61 |
+
+The Cutometer R2 rows include Choi, whose paper says only "Cutometer"; the R2 label comes from Data S1.
 
 #### Hydration sensitivity
-- Only rows checked against the paper: 0.50 (0.15 to 0.86), k = 10.
-- Excluding the untreated controls: 0.41 (0.15 to 0.68).
-- Leave-one-out range: 0.37 to 0.53.
+- Excluding Yoon 2014 (endpoint SDs not reported; rebuilt from a figure): 0.57 (0.28 to 0.87), k = 15.
+- Excluding di Cerbo: 0.51 (0.24 to 0.79). Excluding Sugihara: 0.57 (0.28 to 0.87).
+- Miyanaga as its reported change score instead of a rebuilt endpoint: 0.53 (0.27 to 0.80), or 0.54 (0.28 to 0.81) with the other error-bar cap. Excluding Miyanaga: 0.50 (0.23 to 0.77).
+- Asserin with only the Peptan P arm, as in Data S1 (corrected SDs): 0.58 (0.29 to 0.86).
+- Excluding the untreated controls: 0.50 (0.21 to 0.79).
+- Leave-one-out range: 0.48 to 0.61.
+
+Miyanaga reports only change from baseline. To keep every row in this analysis an endpoint SMD (the Cochrane Handbook advises against mixing the two kinds), its corrected row is rebuilt as an endpoint: the screening value plus the change, with the screening SDs. That is the same form Data S1 uses for Yoon and Koizumi. The week-12 SDs aren't reported, so the change score and the exclusion are shown above.
 
 #### Small-study asymmetry
 
-An Egger-type test gives p = 0.09 for hydration, which suggests possible small-study asymmetry, and p = 0.47 for elasticity.
+An Egger-type test gives p = 0.34 for hydration and p = 0.71 for elasticity.
 
 #### Dose
 
 Grimes and Mahto's headline ("no evidence of benefit") comes from dose meta-regressions: do trials using more collagen show bigger effects?
-- After correction, the daily-dose slopes are still not significant (elasticity p = 0.07, hydration p = 0.09).
+- After correction, no dose slope is significant: daily dose p = 0.32 (elasticity) and 0.41 (hydration); cumulative dose p = 0.35 and 0.29; the suction-methods subgroup from their Table 2, p = 0.22 (daily) and 0.27 (cumulative).
+- With Campos's SDs left as entered, the elasticity slopes become significant or borderline: daily p = 0.054, cumulative p = 0.015, suction subgroup p = 0.036 (daily) and 0.004 (cumulative). They rest on that one row.
 - A missing dose slope tests whether more collagen works better, not whether collagen works. With 16 to 18 small trials it has little power.
-- The cumulative-dose slope for elasticity becomes significant after correction (p = 0.02). That depends entirely on Campos, a row I could not check (p = 0.54 without it), so I put no weight on it.
 
 #### Reproduction check
 
@@ -113,22 +141,16 @@ Before changing anything, the script reproduces all ten rows of Grimes and Mahto
 - It isn't a collagen-specific effect. Nearly every comparison is against a non-protein placebo. Yoon 2014's control contained casein, and two comparisons are against no supplement at all (Choi, Nomoto). Several products combine collagen with other ingredients. Analyses 3 and 4 look at collagen-only products.
 - Industry funding. Most trials were funded, supplied or co-authored by collagen manufacturers.
   - Grimes and Mahto's "Not Industry" label is looser than that. It includes Choi 2014 (product supplied by Amorepacific; four of its nine authors work at Amorepacific's research centre), Žmitek 2020 (product supplied by Valens Int.) and the Tak 2021 elasticity row (three authors employed by the manufacturer, Amicogen; the same trial's hydration row is labelled "industry").
-  - Using their label, neither pooled result is statistically significant: elasticity 0.70 (−0.12 to 1.53, k = 6) and hydration 0.39 (−0.06 to 0.84, k = 3). These subsets are too small to tell whether industry trials report larger effects.
+  - Using their label, neither pooled result is statistically significant: elasticity 0.41 (−0.15 to 0.97, k = 6) and hydration 0.72 (−0.03 to 1.47, k = 3). These subsets are too small to tell whether industry trials report larger effects.
 - Clinical meaning. These are instrument readings. How well they track changes people would notice is uncertain.
 
-### How rows were chosen, and rows I did not check
+### How rows were checked
 
-I did not decide in advance which rows to check. The rows I checked first were mostly ones where Data S1 showed collagen doing worse than placebo, so errors favouring collagen are more likely to remain in rows I did not check. Two of the rows I checked later (Jung and Czajka) had errors in collagen's favour.
+Every row of Data S1 has now been checked against its paper. I did not decide in advance which rows to check. The rows I checked first were mostly ones where Data S1 showed collagen doing worse than placebo; the last six trials checked (Campos, di Cerbo, Asserin, Miyanaga, Schwartz, Sugihara) had errors in both directions. Several of those values had to be read from figures; the axis calibrations and readings are in the notes column of `corrections.csv`, and a separate blind extraction of the four figure-read trials is in [`checks/`](checks/).
 
-- Checked:
-  - every row in `corrections.csv`;
-  - Bolke 2019 and Žmitek 2020, elasticity and hydration (both match their papers);
-  - the Koizumi, Choi, Ito and Nomoto hydration rows;
-  - the arm direction of the Tak elasticity row (it's unclear whether its "mm" measure is higher-is-better).
-- Not checked, elasticity: Campos 2015, di Cerbo 2014, Sugihara 2015, Miyanaga 2021, Schwartz 2019.
-- Not checked, hydration: Asserin 2015, di Cerbo 2015, Sugihara 2015, Miyanaga 2021, Schwartz 2019, and the Yoon 2014 values (read from a figure).
-
-These rows are unchanged from Data S1. The "only rows checked" analyses leave them out.
+Two rows can't be fully settled from their papers:
+- Tak 2021 elasticity: it's unclear whether its "mm" measure is higher-is-better.
+- Yoon 2014 hydration: the week-12 SDs aren't reported. Data S1 rebuilds them from a figure (baseline SD plus the error bar); I left that row as entered and ran it as a sensitivity analysis.
 
 ---
 
@@ -251,20 +273,21 @@ Both meta-analyses include products that combine collagen with other active ingr
 
 - Kept despite minor extras: Kim 2018 (100 mg vitamin C in both arms) and Jung 2021 (vitamin C in the drink base; the placebo's contents aren't itemised).
 - Excluded as multi-ingredient: Ito, Nomoto, Genovese, Czajka, Yoon, Žmitek, Campos, Bolke, Schwartz, di Cerbo.
-- Excluded because the composition wasn't verified: Asserin.
+- Asserin 2015 (two collagen arms against placebo) is collagen only and is now included. An earlier version excluded it because its paper hadn't been checked.
 
 | Collagen-only products, Grimes & Mahto data | k | SMD (95% CI) |
 |---|---|---|
-| Elasticity | 8 | 0.44 (0.15 to 0.73) |
+| Elasticity | 8 | 0.44 (0.15 to 0.72) |
 | Elasticity, placebo-controlled only (excluding Choi) | 7 | 0.37 (0.10 to 0.64) |
-| Elasticity, Cutometer R2 only | 6 | 0.50 (0.27 to 0.72) |
-| Elasticity, only rows checked against the paper | 5 | 0.50 (0.25 to 0.76) |
-| Hydration | 8 | 0.31 (0.11 to 0.51) |
-| Hydration, placebo-controlled only (excluding Choi) | 7 | 0.29 (0.09 to 0.49) |
-| Hydration, excluding Jung | 7 | 0.33 (0.11 to 0.55) |
-| Hydration, only rows checked against the paper | 6 | 0.32 (0.04 to 0.59) |
+| Elasticity, Cutometer R2 only | 6 | 0.49 (0.27 to 0.71) |
+| Elasticity, excluding Tak (direction unclear) | 7 | 0.53 (0.32 to 0.73) |
+| Elasticity, excluding Sugihara (shares Inoue's placebo group) | 7 | 0.42 (0.09 to 0.75) |
+| Hydration | 9 | 0.50 (0.19 to 0.80) |
+| Hydration, placebo-controlled only (excluding Choi) | 8 | 0.48 (0.16 to 0.80) |
+| Hydration, excluding Jung | 8 | 0.54 (0.21 to 0.87) |
+| Hydration, excluding Sugihara | 8 | 0.52 (0.18 to 0.87) |
 
-These estimates are smaller than the all-product results, and the trials agree much more closely. Three of the eight elasticity rows (Sugihara, Miyanaga, Tak) and two of the eight hydration rows (Sugihara, Miyanaga) were not checked against the papers. The t-based prediction intervals include zero (hydration −0.03 to 0.65). The trials are still compared mostly against non-protein placebos, and most were funded or supplied by manufacturers.
+The elasticity estimates are a little smaller than the all-product result, and the trials agree more closely. The hydration estimate rose from 0.31 in an earlier version to 0.50, mainly because the Miyanaga row was corrected and Asserin was added. The t-based prediction intervals include zero (elasticity −0.38 to 1.25; hydration −0.42 to 1.41). The trials are still compared mostly against non-protein placebos, and most were funded or supplied by manufacturers.
 
 ---
 
@@ -275,7 +298,7 @@ This uses the re-extracted Batool data from Analysis 2 (endpoint values primary)
 - Kept for hydration: Inoue 2016, Demir-Dora 2024, Lee 2023, Lee 2025, Zague 2025, Proksch 2025, Morakul 2024, Tak 2021, Evans 2021, Vleminckx 2024, Kim 2018, Choi 2014, Koizumi 2018.
 - Kept for elasticity: Lee 2023, Inoue 2016, Seong 2024, Sugihara 2015, Vleminckx 2024, Kim 2018, Koizumi 2018, Kim 2022, Choi 2014, Ahi 2024.
 - Kept for roughness: Inoue, Sugihara, Lee, Seong, Koizumi, Demir-Dora 2024.
-- Excluded as multi-ingredient: Nomoto, Ito, Bolke, Schwartz, Yoon, Žmitek, Lin. Baek 2025 is excluded because its composition is unclear (a judgement call, as for Asserin in Analysis 3).
+- Excluded as multi-ingredient: Nomoto, Ito, Bolke, Schwartz, Yoon, Žmitek, Lin. Baek 2025 is excluded because its composition is unclear (a judgement call).
 
 | Collagen-only products, Batool data (re-extracted) | SMD (95% CI) | Rows, trials |
 |---|---|---|
@@ -291,7 +314,7 @@ This uses the re-extracted Batool data from Analysis 2 (endpoint values primary)
 | Roughness, multilevel model with cluster-robust CI | −0.53 (−0.88 to −0.18) | 17, 6 |
 | Roughness, endpoint values only | −0.63 (−0.85 to −0.40) | 12, 4 |
 
-The collagen-only elasticity estimate (0.37 to 0.48) is close to Analysis 3's 0.44. The collagen-only hydration estimate (0.61) is higher than Analysis 3's 0.31, from a largely different set of trials. For elasticity the two analyses share Inoue, Sugihara, Koizumi, Kim 2018 and Choi; for hydration, Inoue, Koizumi, Choi, Kim 2018 and Tak. So this is not independent confirmation.
+The collagen-only elasticity estimate (0.37 to 0.48) is close to Analysis 3's 0.44. The collagen-only hydration estimate (0.61) is a little higher than Analysis 3's 0.50, from a largely different set of trials. For elasticity the two analyses share Inoue, Sugihara, Koizumi, Kim 2018 and Choi; for hydration, Inoue, Koizumi, Choi, Kim 2018 and Tak. So this is not independent confirmation.
 
 ---
 

@@ -85,7 +85,7 @@ dose_fit <- function(d, subset = rep(TRUE, nrow(d)), cumulative = FALSE) {
 }
 slope <- function(lab, d, subset = rep(TRUE, nrow(d)), cumulative = FALSE) {
   m <- dose_fit(d, subset, cumulative)
-  say("  %-66s %s coefficient = %7.4f (95%% CI %7.4f to %7.4f), p = %.2f, k = %2d",
+  say("  %-66s %s coefficient = %7.4f (95%% CI %7.4f to %7.4f), p = %.3f, k = %2d",
       lab, if (cumulative) "cumulative-dose (g)" else "daily-dose (g/day)",
       m$b[2], m$ci.lb[2], m$ci.ub[2], m$pval[2], m$k)
   invisible(m)
@@ -174,6 +174,7 @@ pool("as published, Czajka excluded", elas, elas$study != "czaka 2018")
 rev7 <- c("Ito 2018", "Nometo 2020", "Inno 2016", "sangsuwan 2020", "choi 2014", "genovase 2017", "koizuma 2018")
 pool("as published, the 7 reversed rows replaced by their corrected rows", swap_rows(elas, rev7, elas_c))
 pool("corrected, Czajka excluded", elas_c, elas_c$study != "czaka 2018")
+pool("corrected, but Campos as entered in Data S1 (error bars read as SDs)", swap_rows(elas_c, "campos", elas))
 
 say("")
 say("== Step 5c: elasticity sensitivity analyses (corrected data) ==")
@@ -184,17 +185,21 @@ pool("Cutometer R2 only, excluding untreated controls (Choi, Nomoto)", elas_c,
      elas_c$Notes %in% "R2" & !elas_c$study %in% c("choi 2014", "Nometo 2020"))
 pool("suction (Cutometer) rows only", elas_c, elas_c$Suction %in% 1)
 pool("excluding untreated, non-placebo controls (Choi, Nomoto)", elas_c, !elas_c$study %in% c("choi 2014", "Nometo 2020"))
-checked_e <- c("Ito 2018", "Nometo 2020", "Inno 2016", "sangsuwan 2020", "choi 2014", "genovase 2017",
-               "koizuma 2018", "kim 2018", "czaka 2018", "Yoon 2014", "Bolke 2019", "zmitek 2020")
-pool("only rows checked against the original paper (Tak excluded: direction unclear)", elas_c, elas_c$study %in% checked_e)
+checked_e <- setdiff(elas_c$study, "tak 2021")   # every row checked against its paper; Tak's direction is unclear
+pool("excluding Tak 2021 (the only row whose direction could not be confirmed)", elas_c, elas_c$study %in% checked_e)
 takflip <- elas_c; i <- row_of(takflip, "tak 2021"); takflip[i, c("ME", "MC")] <- takflip[i, c("MC", "ME")]
 pool("Tak 2021 elasticity sign reversed (if its mm measure is lower-is-better)", takflip)
-pool("excluding Tak 2021 elasticity", elas_c, elas_c$study != "tak 2021")
 cz <- elas_c; i <- row_of(cz, "czaka 2018"); cz[i, "MC"] <- 7.0 + (7.9 - 6.9)
 pool("Czajka with the baseline difference removed (control + 1.0)", cz)
 kz <- elas_c; i <- row_of(kz, "koizuma 2018"); kz[i, c("SE", "SC")] <- c(0.007 * sqrt(37), 0.008 * sqrt(34))
 pool("Koizumi SDs from baseline SEM x sqrt(n) instead of delta method", kz)
-pool("excluding Campos (not checked; largest positive row)", elas_c, elas_c$study != "campos")
+pool("excluding Campos (error-bar type inferred; 95% CI reading used)", elas_c, elas_c$study != "campos")
+cs <- swap_rows(elas_c, "campos", elas)
+pool("Campos error bars read as SDs (as entered in Data S1 and Pu 2023)", cs)
+cm <- elas_c; i <- row_of(cm, "campos"); cm[i, c("SE", "SC")] <- c(0.04, 0.026) * sqrt(30)
+pool("Campos error bars read as SEMs", cm)
+pool("excluding di Cerbo (post-washout reading; device units unstated)", elas_c, elas_c$study != "di cerbo 2014")
+pool("excluding Sugihara 2015 (shares its placebo group with Inoue 2016)", elas_c, elas_c$study != "shugihara2015")
 pool("de Miranda subset only", elas_c, deM(elas_c))
 pool("Grimes & Mahto 'Not Industry' label (includes manufacturer-supplied trials)", elas_c,
      trimws(tolower(elas_c$sponsor)) == "not industry")
@@ -207,9 +212,17 @@ r <- regtest(fit(elas_c)); say("  Egger-type regression test for funnel asymmetr
 
 say("")
 say("== Step 5d: hydration sensitivity analyses (corrected data) ==")
-checked_h <- c("Inoue 2016", "Nometo 2020", "Ito 2018", "choi 2014", "kim 2018", "tak 2021", "koizuma 2018",
-               "Bolke 2019", "zmitek 2020", "jung 2020")
-pool("only rows checked against the original paper", hyd_c, hyd_c$study %in% checked_h)
+checked_h <- setdiff(hyd_c$study, "yoon 2014")   # every row checked; Yoon's week-12 SDs are not reported
+pool("excluding Yoon 2014 (endpoint SDs not reported; values rebuilt from a figure)", hyd_c, hyd_c$study %in% checked_h)
+pool("excluding di Cerbo (post-washout reading; device units unstated)", hyd_c, hyd_c$study != "di cerbo 2015")
+pool("excluding Sugihara 2015 (shares its placebo group with Inoue 2016)", hyd_c, hyd_c$study != "shugihara2015")
+mi <- hyd_c; i <- row_of(mi, "miyanga 2021"); mi[i, c("ME", "SE", "MC", "SC")] <- c(16.34, 10.97, 6.53, 7.50)
+pool("Miyanaga as its reported change score (5 g SD 10.97) instead of an endpoint", mi)
+mi[i, "SE"] <- 9.49
+pool("Miyanaga as change score with the other error-bar cap (5 g SD 9.49)", mi)
+pool("excluding Miyanaga hydration (week-12 SDs not reported)", hyd_c, hyd_c$study != "miyanga 2021")
+as2 <- hyd_c; i <- row_of(as2, "Asserin 2015"); as2[i, c("NE", "ME", "SE")] <- c(11, 64.72, 2.54 * sqrt(11))
+pool("Asserin, Peptan P arm only (the arm Data S1 used), corrected SDs", as2)
 pool("excluding untreated, non-placebo controls (Choi, Nomoto)", hyd_c, !hyd_c$study %in% c("choi 2014", "Nometo 2020"))
 pool("capacitance devices only", hyd_c, hyd_c$cap_method %in% 1)
 pool("de Miranda subset only", hyd_c, deM(hyd_c))
@@ -226,11 +239,11 @@ say("== Step 5e: ANALYSIS 3 (separate question): collagen-only products, correct
 say("  Trials where collagen was the only active ingredient that differed between arms, per the trial")
 say("  report (Kim 2018 gave 100 mg vitamin C to both arms; Jung's drink vehicle contains vitamin C).")
 say("  Excluded as multi-ingredient: Ito, Nomoto, Genovese, Czajka, Yoon, Zmitek, Campos, Bolke,")
-say("  Schwartz, di Cerbo (VISCODERM Pearls, per its abstract); composition not verified: Asserin.")
+say("  Schwartz, di Cerbo (VISCODERM Pearls). Asserin (Peptan P vs placebo) is collagen only.")
 only_e <- c("Inno 2016", "sangsuwan 2020", "choi 2014", "koizuma 2018", "kim 2018", "miyanaga 2021",
             "shugihara2015", "tak 2021")
 only_h <- c("Inoue 2016", "koizuma 2018", "shugihara2015", "choi 2014", "kim 2018", "tak 2021", "jung 2020",
-            "miyanga 2021")
+            "miyanga 2021", "Asserin 2015")
 if (!all(only_e %in% elas_c$study) || !all(only_h %in% hyd_c$study)) stop("collagen-only study names not found")
 pool("elasticity, collagen-only products", elas_c, elas_c$study %in% only_e)
 pool("elasticity, collagen-only, placebo-controlled (excluding Choi)", elas_c, elas_c$study %in% setdiff(only_e, "choi 2014"))
@@ -238,8 +251,9 @@ pool("elasticity, collagen-only, Cutometer R2 only", elas_c, elas_c$study %in% o
 pool("hydration, collagen-only products", hyd_c, hyd_c$study %in% only_h)
 pool("hydration, collagen-only, placebo-controlled (excluding Choi)", hyd_c, hyd_c$study %in% setdiff(only_h, "choi 2014"))
 pool("hydration, collagen-only, excluding Jung (placebo contents not itemised)", hyd_c, hyd_c$study %in% setdiff(only_h, "jung 2020"))
-pool("elasticity, collagen-only, rows checked against the paper only", elas_c, elas_c$study %in% intersect(only_e, checked_e))
-pool("hydration, collagen-only, rows checked against the paper only", hyd_c, hyd_c$study %in% intersect(only_h, checked_h))
+pool("elasticity, collagen-only, excluding Tak 2021 (direction unclear)", elas_c, elas_c$study %in% setdiff(only_e, "tak 2021"))
+pool("elasticity, collagen-only, excluding Sugihara (shares Inoue's placebo group)", elas_c, elas_c$study %in% setdiff(only_e, "shugihara2015"))
+pool("hydration, collagen-only, excluding Sugihara (shares Inoue's placebo group)", hyd_c, hyd_c$study %in% setdiff(only_h, "shugihara2015"))
 pool("elasticity, collagen-only, excluding Kim 2018 (vitamin C in both arms)", elas_c, elas_c$study %in% setdiff(only_e, "kim 2018"))
 
 say("")
@@ -253,8 +267,13 @@ for (set in c("Pu set (all rows)", "de Miranda subset")) {
   slope("elasticity, published", elas, se, TRUE); slope("elasticity, corrected", elas_c, se, TRUE)
   slope("hydration, published", hyd, sh, TRUE);   slope("hydration, corrected", hyd_c, sh, TRUE)
 }
-say("Cumulative-dose elasticity slope (corrected, Pu set) without Campos:")
-slope("elasticity, corrected, excluding Campos", elas_c, elas_c$study != "campos", TRUE)
+say("Pu suction-methods subset (Table 2 row), corrected:")
+sc <- elas_c$Suction %in% 1
+slope("elasticity, suction, published", elas, elas$Suction %in% 1); slope("elasticity, suction, corrected", elas_c, sc)
+slope("elasticity, suction, published", elas, elas$Suction %in% 1, TRUE); slope("elasticity, suction, corrected", elas_c, sc, TRUE)
+say("Sensitivity: corrected data but Campos as entered (error bars read as SDs; dose unchanged):")
+slope("elasticity, all rows", cs); slope("elasticity, all rows", cs, cumulative = TRUE)
+slope("elasticity, suction", cs, cs$Suction %in% 1); slope("elasticity, suction", cs, cs$Suction %in% 1, TRUE)
 
 say("")
 say("== Session ==")
